@@ -39,9 +39,6 @@ include("config/dbcon.php");
                   <input type="file" name="image" id="image" class="form-control" placeholder="Image">
                 </div>
               </div>
-
-
-
             </div>
 
 
@@ -84,7 +81,7 @@ include("config/dbcon.php");
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Produts List</h3>
+              <h3 class="card-title">Product List</h3>
               <a href="#" class="btn btn-primary btn-sm  float-right" data-toggle="modal" data-target="#Add_user_model">Add Product</a>
             </div>
             <!-- /.card-header -->
@@ -97,7 +94,7 @@ include("config/dbcon.php");
                     <th> DESCRIPTION</th>
                     <th> PRICE</th>
                     <th> IMAGE</th>
-                    <th> Action</th>
+                    <th> ACTION</th>
                   </tr>
                 </thead>
                 <tbody>

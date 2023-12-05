@@ -14,13 +14,13 @@ if (isset($_REQUEST['add_user'])) {
       $_SESSION['status'] = "Email Id allready exisest!";
       header("location: registered.php");
      }else{
-      $sql = "INSERT INTO `user` (name,email,phone_number,password) VALUES ('$name','$email','$phone_number','$password')";
+      $sql = "INSERT INTO `user` (name,email,phone_number,password,user_role) VALUES ('$name','$email','$phone_number','$password','user')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
-         $_SESSION['status'] = "successfully submited";
+         $_SESSION['status'] = "successfully submitted";
          header("location: registered.php");
       } else {
-         $_SESSION['status'] = "data not submited";
+         $_SESSION['status'] = "data not submitted";
          header("location: registered.php");
       }
      }

@@ -78,9 +78,9 @@ if (isset($_SESSION["cart"])) {
                                     <p class="card-text">₹ <?= $row['price'] ?></p>
                                     <input type="number" class="text-center border" name="product_quentity" value="1" min="1" max="10">
                                     <input type="hidden" name="product_image" value="./images/food1.jpg">
-                                    <input type="hidden" name="product_name" value="Camara1">
-                                    <input type="hidden" name="product_price" value="5000">
-                                    <input type="hidden" name="product_image" value="https://m.media-amazon.com/images/I/81DvzeZIBOL.jpg">
+                                    <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
+                                    <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
+                                    <input type="hidden" name="product_image" value="<?php echo "admin/upload/".$row['image'] ?>">
                                     <input type="submit" name="addcart" value="Add Cart" class="btn btn-info"></input>
                                 </div>
                             </div>

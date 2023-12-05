@@ -21,7 +21,7 @@ if (isset($_REQUEST['submit'])) {
 
         header("location: index.php");
     } else {
-        $_SESSION['status'] = "Username and Password wrong ";
+        $_SESSION['status'] = "Email and Password not matched ";
         // echo"<script>window.location='login.php'</script>";
     }
 }

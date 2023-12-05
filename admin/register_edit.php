@@ -83,9 +83,7 @@ include("config/dbcon.php");
                                     echo "<h1 style='color:red' >" . "No data in table" . "</h1>";
                                 }
                             }
-
                             ?>
-
                         </div>
                     </div>
                 </div>
