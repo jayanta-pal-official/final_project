@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("config/dbcon.php");
+//add user
 if (isset($_REQUEST['add_user'])) {
    $name = $_REQUEST['name'];
    $email = $_REQUEST['email'];
@@ -32,7 +33,7 @@ if (isset($_REQUEST['add_user'])) {
    }
 }
 
-
+//update user
 
 if (isset($_REQUEST['update_user'])) {
    $id = $_REQUEST['id'];

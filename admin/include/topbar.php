@@ -43,6 +43,8 @@
         if(isset($_SESSION['loggedin'])){
           // echo "jayanta";
           echo $_SESSION['log_user']['admin_name'];
+        }else{
+          echo "not logged in";
         }
        
         ?>
