@@ -53,21 +53,7 @@ include("include/common.php");
                                                     <label>Phone number</label>
                                                     <input type="text" name="phone_number" class="form-control" placeholder="Phone number" value="<?= $row['phone_number']  ?>">
                                                 </div>
-                                                <div class="row ">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label>Password</label>
-                                                            <input type="text" name="password" id="password" class="form-control" placeholder="Password">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label>Confirm Password</label>
-                                                            <input type="text" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
-                                                        </div>
-                                                    </div>
 
-                                                </div>
                                                 <div class="modal-footer">
                                                     <input type="submit" class="btn btn-primary" name="update_user" value="Update">
                                                 </div>

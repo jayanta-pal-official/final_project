@@ -71,7 +71,7 @@ if (isset($_SESSION["cart"])) {
                     <div class="col-md-4 mb-2">
                         <form method="POST" action="process.php">
                             <div class="card" style="width: 25rem;">
-                                <img src="<?php echo "admin/upload/".$row['image'] ?>" alt="image" class="card-img-top" alt="...">
+                                <img src="<?php echo "upload/".$row['image'] ?>" alt="image" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $row['name'] ?></h5>
                                     <span><?= $row['description'] ?></span>
@@ -80,7 +80,7 @@ if (isset($_SESSION["cart"])) {
                                     <input type="hidden" name="product_image" value="./images/food1.jpg">
                                     <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
                                     <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
-                                    <input type="hidden" name="product_image" value="<?php echo "admin/upload/".$row['image'] ?>">
+                                    <input type="hidden" name="product_image" value="<?php echo "upload/".$row['image'] ?>">
                                     <input type="submit" name="addcart" value="Add Cart" class="btn btn-info"></input>
                                 </div>
                             </div>
