@@ -1,9 +1,6 @@
 <?php
 session_start();
-include("config/dbcon.php");
-include("include/header.php");
-include("include/sidebar.php");
-include("include/topbar.php");
+include("include/common.php");
 
 //INSERT PRODUCTS
 if (isset($_REQUEST['add_product'])) {

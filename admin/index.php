@@ -1,8 +1,6 @@
 <?php
 include("./authentication.php");
-include("include/header.php");
-include("include/sidebar.php");
-include("include/topbar.php");
+include("./include/common.php");
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

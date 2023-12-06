@@ -1,10 +1,6 @@
 <?php
 session_start();
-include("include/header.php");
-include("include/sidebar.php");
-include("include/topbar.php");
-include("config/dbcon.php");
-
+include("include/common.php");
 ?>
 
 <div class="content-wrapper">

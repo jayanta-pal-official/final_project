@@ -1,9 +1,6 @@
 <?php
 session_start();
-include("include/header.php");
-include("include/sidebar.php");
-include("include/topbar.php");
-include("config/dbcon.php");
+include("include/common.php");
 ?>
 <!-- jquery cdn -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
