@@ -2,7 +2,14 @@
 include("./authentication.php");
 include("./include/common.php");
 ?>
-<div class="content-wrapper">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -16,11 +23,22 @@ include("./include/common.php");
               <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
           </div><!-- /.col -->
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+
     <!-- Main content -->
     <section class="content">
+      <?php
+      if (isset($_SESSION['status'])) { ?>
+        <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+          <?php echo "<b> Warning ! </b>" . $_SESSION['status']; ?>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php }
+      unset($_SESSION['status']);
+      ?>
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -86,9 +104,16 @@ include("./include/common.php");
           <!-- ./col -->
         </div>
         <!-- /.row -->
-        </div><!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
     </section>
-</div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
 <?php
 include("include/footer.php");
 ?>

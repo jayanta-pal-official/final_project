@@ -1,9 +1,11 @@
 <?php
-include("./config/dbcon.php");
 session_start();
+include("./config/dbcon.php");
+
 if (isset($_SESSION['loggedin'])) {
     $_SESSION['status'] = "You are all ready logged In ";
     header("location: index.php");
+    exit();
 }
 if (isset($_REQUEST['submit'])) {
     $email = $_REQUEST['email'];
@@ -98,12 +100,12 @@ if (isset($_REQUEST['submit'])) {
         <!-- Login Form Start -->
         <div class="row justify-content-center wrapper" id="login-box">
             <div class="col-lg-10 my-auto myShadow">
-                <?php if (isset($_SESSION['status'])) { ?>
+                <?php if (isset($_SESSION['auth_status'])) { ?>
                     <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
-                        <?php echo "<b> Warning ! </b>" . $_SESSION['status']; ?>
+                        <?php echo "<b> Warning ! </b>" . $_SESSION['auth_status']; ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                <?php unset($_SESSION['status']);
+                <?php unset($_SESSION['auth_status']);
                 }
                 ?>
 
