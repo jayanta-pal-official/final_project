@@ -20,13 +20,12 @@ include("include/common.php");
         </div><!-- /.container-fluid -->
     </div>
     <div class="content">
-        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <?php if (isset($_SESSION['status'])) {
                         echo "<h4>" . $_SESSION['status'] . "</h4>";
-                        session_unset();
                     }
+                    unset($_SESSION['status']);
                     ?>
                     <div class="card">
                         <div class="card-header">

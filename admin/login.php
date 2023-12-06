@@ -20,7 +20,7 @@ if (isset($_REQUEST['submit'])) {
         $_SESSION['log_user'] = [
             'admin_name' => $row['name']
         ];
-
+        $_SESSION['login_status'] = "Login Successfully";
         header("location: index.php");
     } else {
         $_SESSION['status'] = "Email and Password not matched ";
@@ -106,6 +106,14 @@ if (isset($_REQUEST['submit'])) {
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php unset($_SESSION['auth_status']);
+                }
+                ?>
+                <?php if (isset($_SESSION['status'])) { ?>
+                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+                        <?php echo "<b> Hey! </b>" . $_SESSION['status']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php unset($_SESSION['status']);
                 }
                 ?>
 

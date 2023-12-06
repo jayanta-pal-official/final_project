@@ -1,6 +1,7 @@
 <?php
-session_start();
+// session_start();
 include("config/dbcon.php");
+include("./authentication.php");
 //add user
 if (isset($_REQUEST['add_user'])) {
    $name = $_REQUEST['name'];
@@ -51,4 +52,15 @@ if (isset($_REQUEST['update_user'])) {
 
       header("location: registered.php");
    }
+}
+
+//logout user
+if (isset($_REQUEST['logout_user'])) {
+   // session_destroy();
+unset($_SESSION['loggedin']);
+unset($_SESSION['log_user']);
+
+$_SESSION['status'] ="Logged out successfully";
+header('location:login.php');
+exit(0);
 }

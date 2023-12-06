@@ -79,8 +79,9 @@ include("include/common.php");
         <div class="col-md-12">
           <?php if (isset($_SESSION['status'])) {
             echo "<h4>" . $_SESSION['status'] . "</h4>";
-            session_unset();
+            
           }
+          unset($_SESSION['status']);
           ?>
 
           <div class="card">

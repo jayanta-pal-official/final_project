@@ -36,24 +36,23 @@
       </div>
     </li>
     <!-- user Dropdown Menu -->
-    <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        <?php 
-        
-        if(isset($_SESSION['loggedin'])){
+    <div class="btn-group">
+      <a class="btn btn-secondary dropdown-toggle" href="#"  data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        <?php  if(isset($_SESSION['loggedin'])){
           // echo "jayanta";
           echo $_SESSION['log_user']['admin_name'];
         }else{
           echo "not logged in";
-        }
-       
-        ?>
+        } ?>
       </a>
-
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+      <ul class="dropdown-menu dropdown-menu-lg-end" >
+        <li>
+          <form action="code.php" method="POST">
+            <input type="submit" name="logout_user"  class="dropdown-item" value="logout">
+          </form>
+      </li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><a class="dropdown-item" href="#">Something </a></li>
       </ul>
     </div>
     <li class="nav-item">
@@ -68,5 +67,3 @@
     </li>
   </ul>
 </nav>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

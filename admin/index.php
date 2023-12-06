@@ -39,6 +39,14 @@ include("./include/common.php");
       <?php }
       unset($_SESSION['status']);
       ?>
+     <?php  if (isset($_SESSION['login_status'])) { ?>
+        <div class="alert alert-success alert-dismissible fade show text-center " role="alert">
+          <?php echo "<b> Hey! </b>" . $_SESSION['login_status']; ?>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php }
+      unset($_SESSION['login_status']);
+      ?>
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
