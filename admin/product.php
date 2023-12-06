@@ -108,7 +108,7 @@ include("config/dbcon.php");
                     <td><?= $row['name'] ?></td>
                     <td><?= $row['description'] ?></td>
                     <td><?= $row['price'] ?></td>
-                    <td><img src="<?php echo "upload/".$row['image'] ?>" alt="image" class="card-img-top" width="100px" height="70px" alt="..."></td>
+                    <td><img src="<?php echo "../upload/".$row['image'] ?>" alt="image" class="card-img-top" width="100px" height="70px" alt="..."></td>
                     <td>
                       <a href="product_edit.php?id=<?php echo $row['id'] ?>" name="edit" class="btn btn-primary btn-sm">EDIT</a>
                       <a href="p_code.php?id=<?php echo $row['id'] ?>" name="update" class="btn btn-warning btn-sm"> UPDATE</a>

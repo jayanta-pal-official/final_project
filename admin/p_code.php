@@ -15,7 +15,7 @@ if (isset($_REQUEST['add_product'])) {
     $sql = "INSERT INTO product (name,description,price,image) VALUES ('$name','$descripiion','$price','$image')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
-        move_uploaded_file($_FILES['image']['tmp_name'], "upload/" . $_FILES['image']['name']);
+        move_uploaded_file($_FILES['image']['tmp_name'], "../upload/" . $_FILES['image']['name']);
         $_SESSION['status'] = "product successfully submitted";
         echo "<script>window.location='product.php'</script>";
     } else {
