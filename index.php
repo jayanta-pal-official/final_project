@@ -39,6 +39,14 @@ if (isset($_SESSION["cart"])) {
 </head>
 
 <body>
+<?php if (isset($_SESSION['status'])) { ?>
+                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+                        <?php echo "<b> Hey! </b>" . $_SESSION['status']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php unset($_SESSION['status']);
+                }
+                ?>
     <!-- first child -->
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container">
@@ -48,6 +56,7 @@ if (isset($_SESSION["cart"])) {
                         <a class="nav-link active" aria-current="page" href="./index.php">
                             <h4>Home</h4>
                         </a>
+                        <a href="./user_logout.php" >log out</a>
                     </li>
                 </ul>
                 <form class="d-flex">

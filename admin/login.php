@@ -1,5 +1,6 @@
 <?php
 session_start();
+// include("./authentication.php");
 include("./config/dbcon.php");
 
 if (isset($_SESSION['loggedin'])) {
@@ -10,19 +11,23 @@ if (isset($_SESSION['loggedin'])) {
 if (isset($_REQUEST['submit'])) {
     $email = $_REQUEST['email'];
     $password = $_REQUEST['password'];
-    $query = "SELECT * FROM `user` WHERE 	user_role = 'admin' AND email = '$email' AND password='$password' ";
+    $query = "SELECT * FROM `user` WHERE 	 email = '$email' AND password='$password' ";
     $result = mysqli_query($conn, $query);
     
 
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['loggedin'] = true;
+        
         $_SESSION['log_user'] = [
-            'admin_name' => $row['name']
+            'admin_name' => $row['name'],
+            'user_role' => $row['user_role']
         ];
+        $user_role = $_SESSION['log_user']['user_role'];
+        $_SESSION['loggedin'] = "$user_role";
         $_SESSION['login_status'] = "Login Successfully";
         header("location: index.php");
-    } else {
+    }
+    else {
         $_SESSION['status'] = "Email and Password not matched ";
         // echo"<script>window.location='login.php'</script>";
     }
@@ -116,6 +121,7 @@ if (isset($_REQUEST['submit'])) {
                 <?php unset($_SESSION['status']);
                 }
                 ?>
+                
 
                 <div class="row">
                     <div class="col-lg-7 bg-white p-4">
