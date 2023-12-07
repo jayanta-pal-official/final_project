@@ -41,8 +41,9 @@ if (isset($_REQUEST['update_user'])) {
    $update_name = $_REQUEST['name'];
    $update_email = $_REQUEST['email'];
    $update_phone_number = $_REQUEST['phone_number'];
+   $update_user_role = $_REQUEST['user_role'];
 
-   $update_query = " UPDATE `user` SET name='$update_name', email='$update_email', phone_number='$update_phone_number' WHERE id=$id";
+   $update_query = " UPDATE `user` SET name='$update_name', email='$update_email', phone_number='$update_phone_number',user_role=$update_user_role WHERE id=$id";
    $update_result = mysqli_query($conn, $update_query);
    if ($update_query) {
       $_SESSION['status'] = "User updatated successfully";

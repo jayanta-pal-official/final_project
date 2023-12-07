@@ -98,6 +98,7 @@ include("include/common.php");
                     <th>NAME</th>
                     <th>EMAIL</th>
                     <th>PHONE NUMBER</th>
+                    <th>ROLE</th>
                     <th>ACTION</th>
                   </tr>
                 </thead>
@@ -112,6 +113,16 @@ include("include/common.php");
                       <td><?= $row['name'] ?></td>
                       <td><?= $row['email'] ?></td>
                       <td><?= $row['phone_number'] ?></td>
+                      <td><?php
+                        if($row['user_role'] == "1"){
+                          echo "Admin";
+                        }elseif($row['user_role'] == "0"){
+                          echo "user";
+                        }else{
+                          echo "Invalid user";
+                        }
+                        ?>
+                      </td>
                       <td><a href="register_edit.php?id=<?php echo $row['id'] ?>" class="btn btn-info btn-sm">EDIT</a>
                         <a href="user_delete.php?id=<?php echo $row['id'] ?>" onclick="return my_function()" class="btn btn-danger btn-sm">DELETE</a>
                       </td>

@@ -53,6 +53,15 @@ include("include/common.php");
                                                     <label>Phone number</label>
                                                     <input type="text" name="phone_number" class="form-control" placeholder="Phone number" value="<?= $row['phone_number']  ?>">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Role</label>
+                                                    <select name="user_role" class="form-control" required >
+                                                        <option value="">Select </option>
+                                                        <option value="0">User</option>
+                                                        <option value="1">Admin</option>
+                                                        
+                                                    </select>
+                                                </div>
 
                                                 <div class="modal-footer">
                                                     <input type="submit" class="btn btn-primary" name="update_user" value="Update">
