@@ -86,7 +86,7 @@ include("include/common.php");
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Register user</h3>
+              <h3 class="card-title">DataTable with default features</h3>
               <a href="#" class="btn btn-primary btn-sm  float-right" data-toggle="modal" data-target="#Add_user_model">Add user</a>
             </div>
             <!-- /.card-header -->
@@ -143,7 +143,6 @@ include("include/common.php");
   function my_function() {
     return confirm("are you sure ?");
   }
-
   $(document).ready(function() {
     $('#name, #email,#phone_number,#password,#confirm_password').focus(function() {
       $(this).css('background-color', 'rgba(80, 199, 56)');
@@ -155,5 +154,5 @@ include("include/common.php");
 </script>
 
 <?php
-include("include/footer.php");
+include("./include/footer.php");
 ?>
