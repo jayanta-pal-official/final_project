@@ -12,11 +12,11 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- Fontawesome CSS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-     <!-- Bootstrap 4 CSS CDN -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Bootstrap 4 CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- Bootstrap 4 js CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -24,25 +24,31 @@ session_start();
     <div class="container">
         <!-- Login Form Start -->
         <div class="row justify-content-center wrapper" id="login-box">
-        
-        <?php
-        //  if (isset($_SESSION['user_status'])) { 
-            ?>
-                    <!-- <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
-                        <?php echo "<b> Hey! </b>" . $_SESSION['user_status']; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div> -->
-                <?php 
-                // unset($_SESSION['user_status']);
-                // }
-                ?>
+
+
             <div class="col-lg-10 my-auto myShadow">
-            <?php if (isset($_SESSION['warning'])) { ?>
+                <?php if (isset($_SESSION['warning'])) { ?>
                     <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
                         <?php echo "<b> Hey! </b>" . $_SESSION['warning']; ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php unset($_SESSION['warning']);
+                }
+                ?>
+                <?php if (isset($_SESSION['auth_user_status'])) { ?>
+                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+                        <?php echo "<b> Hey! </b>" . $_SESSION['auth_user_status']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php unset($_SESSION['auth_user_status']);
+                }
+                ?>
+                <?php if (isset($_SESSION['massage'])) { ?>
+                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+                        <?php echo "<b> Hey! </b>" . $_SESSION['massage']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php unset($_SESSION['massage']);
                 }
                 ?>
                 <div class="row">

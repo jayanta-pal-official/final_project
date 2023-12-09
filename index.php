@@ -41,14 +41,14 @@ if (isset($_SESSION["cart"])) {
 </head>
 
 <body>
-<?php if (isset($_SESSION['user_status'])) { ?>
-                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
-                        <?php echo "<b> Hey! </b>" . $_SESSION['user_status']; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php unset($_SESSION['user_status']);
-                }
-                ?>
+    <?php if (isset($_SESSION['user_status'])) { ?>
+        <div class="alert alert-success alert-dismissible fade show text-center " role="alert">
+            <?php echo "<b> Hey! </b>" . $_SESSION['user_status']; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php unset($_SESSION['user_status']);
+    }
+    ?>
 
     <!-- first child -->
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
@@ -59,7 +59,7 @@ if (isset($_SESSION["cart"])) {
                         <a class="nav-link active" aria-current="page" href="./index.php">
                             <h4>Home</h4>
                         </a>
-                        <a href="./user_logout.php" >log out</a>
+                        <a href="./user_logout.php">log out</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -78,33 +78,33 @@ if (isset($_SESSION["cart"])) {
                 $select_query = "SELECT * FROM product";
                 $result = mysqli_query($conn, $select_query);
                 // $row= mysqli_fetch_assoc($result);
-                if(mysqli_num_rows($result)>0){
-                while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <div class="col-md-4 mb-2">
-                        <form method="POST" action="process.php">
-                            <div class="card" style="width: 25rem;">
-                                <img src="<?php echo "upload/".$row['image'] ?>" alt="image" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?= $row['name'] ?></h5>
-                                    <span><?= $row['description'] ?></span>
-                                    <p class="card-text">₹ <?= $row['price'] ?></p>
-                                    <input type="number" class="text-center border" name="product_quentity" value="1" min="1" max="10">
-                                    <input type="hidden" name="product_image" value="./images/food1.jpg">
-                                    <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
-                                    <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
-                                    <input type="hidden" name="product_image" value="<?php echo "upload/".$row['image'] ?>">
-                                    <input type="submit" name="addcart" value="Add Cart" class="btn btn-info"></input>
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <div class="col-md-4 mb-2">
+                            <form method="POST" action="process.php">
+                                <div class="card" style="width: 25rem;">
+                                    <img src="<?php echo "upload/" . $row['image'] ?>" alt="image" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $row['name'] ?></h5>
+                                        <span><?= $row['description'] ?></span>
+                                        <p class="card-text">₹ <?= $row['price'] ?></p>
+                                        <input type="number" class="text-center border" name="product_quentity" value="1" min="1" max="10">
+                                        <input type="hidden" name="product_image" value="./images/food1.jpg">
+                                        <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
+                                        <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
+                                        <input type="hidden" name="product_image" value="<?php echo "upload/" . $row['image'] ?>">
+                                        <input type="submit" name="addcart" value="Add Cart" class="btn btn-info"></input>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                <?php }
-                }else{ ?>
+                            </form>
+                        </div>
+                    <?php }
+                } else { ?>
                     <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
-                    <strong>Warning!</strong> No record found
+                        <strong>Warning!</strong> No record found
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-               <?php  }
+                <?php  }
                 ?>
             </div>
         </div>
