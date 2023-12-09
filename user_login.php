@@ -12,6 +12,11 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- Fontawesome CSS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+     <!-- Bootstrap 4 CSS CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Bootstrap 4 js CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -19,7 +24,27 @@ session_start();
     <div class="container">
         <!-- Login Form Start -->
         <div class="row justify-content-center wrapper" id="login-box">
+        
+        <?php
+        //  if (isset($_SESSION['user_status'])) { 
+            ?>
+                    <!-- <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+                        <?php echo "<b> Hey! </b>" . $_SESSION['user_status']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div> -->
+                <?php 
+                // unset($_SESSION['user_status']);
+                // }
+                ?>
             <div class="col-lg-10 my-auto myShadow">
+            <?php if (isset($_SESSION['warning'])) { ?>
+                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+                        <?php echo "<b> Hey! </b>" . $_SESSION['warning']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php unset($_SESSION['warning']);
+                }
+                ?>
                 <div class="row">
                     <div class="col-lg-7 bg-white p-4">
                         <h1 class="text-center font-weight-bold text-primary">Sign in to Account</h1>
@@ -55,62 +80,13 @@ session_start();
                         <h1 class="text-center font-weight-bold text-white">Hello Friends!</h1>
                         <hr class="my-3 bg-light myHr" />
                         <p class="text-center font-weight-bolder text-light lead">Enter your personal details and start your journey with us!</p>
-                        <button class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" id="register-link">Sign Up</button>
+                        <a href="./user_registration.php" class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" id="register-link">Sign Up</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Login Form End -->
-        <!-- Registration Form Start -->
-        <div class="row justify-content-center wrapper" id="register-box" style="display: none;">
-        <?php if (isset($_SESSION['user_status'])) { ?>
-                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
-                        <?php echo "<b> Hey! </b>" . $_SESSION['user_status']; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php unset($_SESSION['user_status']);
-                }
-                ?>
-            <div class="col-lg-10 my-auto myShadow">
-                <div class="row">
-                    <div class="col-lg-5 d-flex flex-column justify-content-center myColor p-4">
-                        <h1 class="text-center font-weight-bold text-white">Welcome Back!</h1>
-                        <hr class="my-4 bg-light myHr" />
-                        <p class="text-center font-weight-bolder text-light lead">To keep connected with us please login with your personal info.</p>
-                        <button class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Sign In</button>
-                    </div>
-                    <div class="col-lg-7 bg-white p-4">
-                        <h1 class="text-center font-weight-bold text-primary">Create Account</h1>
-                        <hr class="my-3" />
-                        <form action="./user_code.php" method="post" class="px-3" id="register-form" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" name="email" id="email" class="form-control" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone number</label>
-                                    <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Phone number">
-                                </div>
 
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="text" name="password" id="password" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <label>Confirm Password</label>
-                                    <input type="text" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
-                                </div>
-                                <input type="submit" name="add_user" id="register-btn" value="Sign Up" class="btn btn-primary btn-lg btn-block myBtn" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Registration Form End -->
         <!-- Forgot Password Form Start -->
         <div class="row justify-content-center wrapper" id="forgot-box" style="display: none;">
             <div class="col-lg-10 my-auto myShadow">
@@ -196,27 +172,9 @@ session_start();
 
     <!-- jQuery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-    <script>
-        $(function() {
-            $("#register-link").click(function() {
-                $("#login-box").hide();
-                $("#register-box").show();
-            });
-            $("#login-link").click(function() {
-                $("#login-box").show();
-                $("#register-box").hide();
-            });
-            $("#forgot-link").click(function() {
-                $("#login-box").hide();
-                $("#forgot-box").show();
-            });
-            $("#back-link").click(function() {
-                $("#login-box").show();
-                $("#forgot-box").hide();
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

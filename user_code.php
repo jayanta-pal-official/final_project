@@ -15,9 +15,9 @@ if (isset($_REQUEST['submit'])) {
             'user_name' => $row['name'],
             'user_role' => $row['user_role'],
         ];
-        $user_role = $_SESSION['user_details']['user_role'];
-        $_SESSION['user_loggedin'] = "$user_role";
-        // $_SESSION['user_status'] = "Login Successfully";
+        // $user_role = $_SESSION['user_details']['user_role'];
+        $_SESSION['user_loggedin'] = true;
+        $_SESSION['user_status'] = "Login Successfully";
         $user_name = $_SESSION['user_details']['user_name'];
         
          header("location: index.php");

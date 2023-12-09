@@ -1,6 +1,7 @@
 <?php
-session_start();
+// session_start();
 include("admin/config/dbcon.php");
+include("./user_authentication.php");
 
 $q = 0;
 if (isset($_SESSION["cart"])) {
@@ -10,6 +11,7 @@ if (isset($_SESSION["cart"])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,14 +41,15 @@ if (isset($_SESSION["cart"])) {
 </head>
 
 <body>
-<?php if (isset($_SESSION['status'])) { ?>
+<?php if (isset($_SESSION['user_status'])) { ?>
                     <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
-                        <?php echo "<b> Hey! </b>" . $_SESSION['status']; ?>
+                        <?php echo "<b> Hey! </b>" . $_SESSION['user_status']; ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                <?php unset($_SESSION['status']);
+                <?php unset($_SESSION['user_status']);
                 }
                 ?>
+
     <!-- first child -->
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container">
