@@ -30,7 +30,7 @@
                         <a href="./user_login.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Sign In</a>
                     </div>
                     <div class="col-lg-7 bg-white p-4">
-                        <h1 class="text-center font-weight-bold text-primary">Sign in to Account</h1>
+                        <h1 class="text-center font-weight-bold text-primary">USER REGISTER PANEL</h1>
                         <hr class="my-3" />
                         <form action="./user_code.php" method="post" class="px-3" id="register-form" enctype="multipart/form-data">
                             <div class="form-group">

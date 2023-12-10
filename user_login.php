@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['u_loggedin'])) {
+    $_SESSION['massage'] = "You are all ready logged In ";
+    header("location: index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +12,7 @@ session_start();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Login, Registration & Forgot Form Design</title>
+    <title>User log in page</title>
     <!-- Bootstrap 4 CSS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- Fontawesome CSS CDN -->

@@ -26,11 +26,10 @@ if (isset($_REQUEST['add_user'])) {
          header("location: registered.php");
       }
      }
-
      
    } else {
       $_SESSION['status'] = "password and confirm password are different!";
-      header("location: registered.php");
+      header("location: admin/registered.php");
    }
 }
 
@@ -57,10 +56,8 @@ if (isset($_REQUEST['update_user'])) {
 
 //logout user
 if (isset($_REQUEST['logout_user'])) {
-   // session_destroy();
 unset($_SESSION['loggedin']);
 unset($_SESSION['log_user']);
-
 $_SESSION['status'] ="Logged out successfully";
 header('location:login.php');
 exit(0);

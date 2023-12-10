@@ -50,6 +50,15 @@ if (isset($_SESSION["cart"])) {
     }
     ?>
 
+                <?php if (isset($_SESSION['massage'])) { ?>
+                    <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
+                        <?php echo "<b> Hey! </b>" . $_SESSION['massage']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php unset($_SESSION['massage']);
+                }
+                ?>
+
     <!-- first child -->
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container">
@@ -59,7 +68,7 @@ if (isset($_SESSION["cart"])) {
                         <a class="nav-link active" aria-current="page" href="./index.php">
                             <h4>Home</h4>
                         </a>
-                        <a href="./user_logout.php">log out</a>
+                        <a href="user_logout.php">log out</a>
                     </li>
                 </ul>
                 <form class="d-flex">
