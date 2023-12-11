@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("include/common.php");
+include("common.fn.admin.php");
 
 //INSERT PRODUCTS
 if (isset($_REQUEST['add_product'])) {
@@ -8,17 +9,7 @@ if (isset($_REQUEST['add_product'])) {
     $descripiion = $_REQUEST['descripiion'];
     $price = $_REQUEST['price'];
     $image = $_FILES['image']['name'];
-
-    $sql = "INSERT INTO product (name,description,price,image) VALUES ('$name','$descripiion','$price','$image')";
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        move_uploaded_file($_FILES['image']['tmp_name'], "../upload/" . $_FILES['image']['name']);
-        $_SESSION['status'] = "product successfully submitted";
-        echo "<script>window.location='product.php'</script>";
-    } else {
-        $_SESSION['status'] = "product not submitted";
-        echo "<script>window.location='product.php'</script>";
-    }
+    insertProduct($conn,$name,$descripiion,$price,$image);    
 }
 // EDIT PRODUCT
 if (isset($_REQUEST['product_edit'])) {
