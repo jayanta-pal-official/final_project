@@ -1,17 +1,17 @@
 <?php
 session_start();
-// session_destroy();
 include("./config/dbcon.php");
+include("common.fn.admin.php");
 
 if (isset($_SESSION['loggedin'])) {
     $_SESSION['status'] = "You are all ready logged In ";
     header("location: index.php");
-    exit(0);
+    exit;
 }
 // log in with validation......
-if (isset($_REQUEST['submit'])) {
-    $email = $_REQUEST['email'];
-    $password = $_REQUEST['password'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = get_inputs('email');
+    $password = get_inputs('password');
     $query = "SELECT * FROM user WHERE email = '$email' AND password='$password' AND user_role=1";
     $result = mysqli_query($conn, $query);
     
@@ -27,10 +27,12 @@ if (isset($_REQUEST['submit'])) {
         $_SESSION['loggedin'] = "$user_role";
         $_SESSION['login_status'] = "Login Successfully";
         header("location: index.php");
+        exit;
     }
     else {
         $_SESSION['status'] = "Email and Password not matched ";
-        // echo"<script>window.location='login.php'</script>";
+        header("location: login.php");
+        exit;
     }
 }
 ?>

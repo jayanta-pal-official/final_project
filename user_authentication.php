@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['u_loggedin'])){
+    $_SESSION['warning'] = "Login to Access Products";
+    header("location:user_login.php");
+    exit;
+}
+
+
+
+
 // define("ADMIN_ROLE",1);
 // define("USER_ROLE",0);
 // define("LOGGED_IN",1);
@@ -9,11 +19,15 @@ session_start();
 //print_r($_SESSION);
 //var_dump(isset($_SESSION['u_loggedin']));
 // if(is_logged_in()){
-if(!isset($_SESSION['u_loggedin'])){
-    $_SESSION['warning'] = "Login to Access Products";
-    header("location:user_login.php");
-    exit;
-}
+
+
+
+
+
+
+
+
+
 // else{
 //     //die("ELSE BLOCK");
 //     // if($_SESSION['u_loggedin'] == USER_ROLE){

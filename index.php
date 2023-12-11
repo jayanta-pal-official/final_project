@@ -1,7 +1,6 @@
 <?php
-// session_start();
+session_start();
 include("admin/config/dbcon.php");
-include("./user_authentication.php");
 
 $q = 0;
 if (isset($_SESSION["cart"])) {
