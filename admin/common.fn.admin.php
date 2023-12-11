@@ -7,20 +7,24 @@ function insertFunction($conn, $name, $email, $phone_number, $password, $confirm
      if(mysqli_num_rows($check_result)>0){
       $_SESSION['status'] = "Email Id allready exisest!";
       header("location: registered.php");
+      exit;
      }else{
       $sql = "INSERT INTO `user` (name,email,phone_number,password,user_role) VALUES ('$name','$email','$phone_number','$password','user')";
       $result = mysqli_query($conn, $sql);
       if ($result) {
          $_SESSION['status'] = "successfully submitted";
          header("location: registered.php");
+         exit;
       } else {
          $_SESSION['status'] = "data not submitted";
          header("location: registered.php");
+         exit;
       }
      }
    } else {
       $_SESSION['status'] = "password and confirm password are different!";
       header("location: admin/registered.php");
+      exit;
    }
 }
 
@@ -34,6 +38,7 @@ function updateFunction($conn, $id, $update_name, $update_email, $update_phone_n
    } else {
       $_SESSION['status'] = "User not updatated";
       header("location: registered.php");
+      exit;
    }
 }
 //Delete User
@@ -42,7 +47,7 @@ function logoutFunction(){
     unset($_SESSION['log_user']);
     $_SESSION['status'] ="Logged out successfully";
     header('location:login.php');
-    exit(0);
+    exit;
 }
 // Insert product 
 function insertProduct($conn,$name,$descripiion,$price,$image){
