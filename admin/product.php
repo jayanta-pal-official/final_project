@@ -5,11 +5,13 @@ include("include/common.php");
 ?>
 <!-- Bootstrap 4 CSS CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
-    <!-- Bootstrap 4 js CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+<!-- Bootstrap 4 js CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 <!-- jquery cdn -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- sweetalert cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="content-wrapper">
   <!-- Modal -->
   <div class="modal fade" id="Add_user_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,13 +75,13 @@ include("include/common.php");
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-        <?php if (isset($_SESSION['status'])) { ?>
-                    <div class="alert alert-info alert-dismissible fade show text-center " role="alert">
-                        <?php echo "<b> Hey! </b>" . $_SESSION['status']; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php unset($_SESSION['status']);
-                }?>
+          <?php if (isset($_SESSION['status'])) { ?>
+            <div class="alert alert-info alert-dismissible fade show text-center " role="alert">
+              <?php echo "<b> Hey! </b>" . $_SESSION['status']; ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <?php unset($_SESSION['status']);
+          } ?>
 
           <div class="card">
             <div class="card-header">
@@ -100,27 +102,32 @@ include("include/common.php");
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                $select_query = "SELECT * FROM product";
-                $result = mysqli_query($conn, $select_query);
-                $number=1;
-                if(mysqli_num_rows($result)>0){
-                while ($row = mysqli_fetch_assoc($result)) { ?>
-                  <tr>
-                    <td><?= $number ?></td>
-                    <td><?= $row['name'] ?></td>
-                    <td><?= $row['description'] ?></td>
-                    <td><?= $row['price'] ?></td>
-                    <td><img src="<?php echo "../upload/".$row['image'] ?>" alt="image" class="card-img-top" width="50px" height="50px" alt="..."></td>
-                    <td>
-                      <a href="product_edit.php?id=<?php echo $row['id'] ?>" name="edit" class="btn btn-primary btn-sm">EDIT</a>
-                      <a href="p_code.php?id=<?php echo $row['id'] ?>" name="delete"  onclick="return my_function()"  class="btn btn-danger btn-sm">DELETE</a>
-                    </td>
-                  </tr>
                   <?php
-                  $number++;
-                }
-              } ?>
+                  $select_query = "SELECT * FROM product";
+                  $result = mysqli_query($conn, $select_query);
+                  $number = 1;
+                  if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                      <tr>
+                        <td><?= $number ?></td>
+                        <td><?= $row['name'] ?></td>
+                        <td><?= $row['description'] ?></td>
+                        <td><?= $row['price'] ?></td>
+                        <td><img src="<?php echo "../upload/" . $row['image'] ?>" alt="image" class="card-img-top" width="50px" height="50px" alt="..."></td>
+                        <td>
+                          <a href="product_edit.php?id=<?php echo $row['id'] ?>&act=edit" name="edit" class="btn btn-primary btn-sm">EDIT</a>
+                          <a href="p_code.php?id=<?php echo $row['id'] ?>&act=delete" name="delete" class="btn btn-danger btn-sm">DELETE</a>
+                          <!-- <form action="p_code.php" onclick="return my_function(this)" >
+                            <input type="hidden" value="<?php //echo $row['id'] ?>">
+                          <input type="submit"  name="delete" class="btn btn-danger btn-sm" value="delete">
+
+                          </form> -->
+                        </td>
+                      </tr>
+                  <?php
+                      $number++;
+                    }
+                  } ?>
                 </tbody>
               </table>
             </div>
@@ -132,10 +139,32 @@ include("include/common.php");
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 <script>
-   function my_function() {
-    return confirm("are you sure ?");
+  //  function my_function() {
+  //   return confirm("are you sure ?");
+  // }
+</script>
+<script>
+  // window.addEventListener('load', function() {
+    
+  // })
+  function my_function(form){
+    swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    form.submit();
+  } 
+});
+return false;
   }
 </script>
 <?php

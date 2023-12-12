@@ -21,8 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_edit']) ) {
     updateProduct($conn,$id,$edit_name,$edit_description,$edit_price,$edit_image);
 }
 // DELETE PRODUCT
-
-   $id=$_GET['id'];
+// if ( isset($_REQUEST['delete']) ) {
+   $id = $_GET['id'];
+   
    $delete_query = "DELETE FROM product WHERE id=$id LIMIT 1";
    $delete_result =mysqli_query($conn,$delete_query);
    if($delete_result){
@@ -32,4 +33,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_edit']) ) {
     $_SESSION['status'] = "Can't delete product!";
     echo "<script>window.location='product.php'</script>";
    }
+// }
     ?>    

@@ -167,3 +167,13 @@ if (isset($_SESSION["cart"])) {
 </body>
 
 </html>
+  <!-- <form action="send.php" method="POST" >
+            <label>Email</label>
+            <input type="email" name="email"  ><br><br>
+            <label>Subject</label>
+            <input type="text" name="subject"  ><br><br>
+            <label>Masage</label>
+            <input type="test" name="massage"  ><br><br>
+            <input type="submit" value="Send" name="submit" >
+        </form> -->
+        
