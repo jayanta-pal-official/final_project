@@ -285,8 +285,8 @@
                                     <input class="app-form-control" name="massage" placeholder="MESSAGE">
                                 </div>
                                 <div class="app-form-group buttons">
-                                    <button class="app-form-button">CANCEL</button>
-                                    <button type="submit" class="app-form-button" name="submit">SEND</button>
+                                    
+                                    <button type="submit" class="app-form-button" name="submit">SEND NOW</button>
                                 </div>
                             </div>
                         </form>

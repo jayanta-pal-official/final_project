@@ -115,8 +115,8 @@ include("include/common.php");
                         <td><?= $row['price'] ?></td>
                         <td><img src="<?php echo "../upload/" . $row['image'] ?>" alt="image" class="card-img-top" width="50px" height="50px" alt="..."></td>
                         <td>
-                          <a href="product_edit.php?id=<?php echo $row['id'] ?>&act=edit" name="edit" class="btn btn-primary btn-sm">EDIT</a>
-                          <a href="p_code.php?id=<?php echo $row['id'] ?>&act=delete" name="delete" class="btn btn-danger btn-sm">DELETE</a>
+                          <a href="product_edit.php?id=<?php echo $row['id'] ?>" name="edit" class="btn btn-primary btn-sm">EDIT</a>
+                          <a href="p_code.php?id=<?php echo $row['id'] ?>" name="delete" onclick="return my_function()" class="btn btn-danger btn-sm">DELETE</a>
                           <!-- <form action="p_code.php" onclick="return my_function(this)" >
                             <input type="hidden" value="<?php //echo $row['id'] ?>">
                           <input type="submit"  name="delete" class="btn btn-danger btn-sm" value="delete">
@@ -143,29 +143,29 @@ include("include/common.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 <script>
-  //  function my_function() {
-  //   return confirm("are you sure ?");
-  // }
+   function my_function() {
+    return confirm("are you sure ?");
+  }
 </script>
 <script>
   // window.addEventListener('load', function() {
     
   // })
-  function my_function(form){
-    swal({
-  title: "Are you sure?",
-  text: "Once deleted, you will not be able to recover this imaginary file!",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    form.submit();
-  } 
-});
-return false;
-  }
+//   function my_function(form){
+//     swal({
+//   title: "Are you sure?",
+//   text: "Once deleted, you will not be able to recover this imaginary file!",
+//   icon: "warning",
+//   buttons: true,
+//   dangerMode: true,
+// })
+// .then((willDelete) => {
+//   if (willDelete) {
+//     form.submit();
+//   } 
+// });
+// return false;
+//   }
 </script>
 <?php
 include("include/footer.php");

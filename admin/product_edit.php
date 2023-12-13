@@ -64,7 +64,8 @@ include("include/common.php");
                                                     <input type="file" name="edit_image" id="image" class="form-control" placeholder="Image">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <img src="<?php echo "../upload/" . $row['image'] ?>" alt="image" class="card-img-top" width="30px" height="60px" alt="...">
+                                                    <img src="<?php echo "../upload/".$row['image']; ?>" alt="image" class="card-img-top" width="30px" height="60px" alt="...">
+                                                    <input type="hidden" value="<?php echo $row['image']; ?>" name="old_image" >
                                                 </div>
                                                 <!-- </div> -->
                                             </div>

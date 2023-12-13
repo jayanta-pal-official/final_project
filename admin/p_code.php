@@ -17,7 +17,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_edit']) ) {
     $edit_name = get_inputs('edit_name');
     $edit_description = get_inputs('edit_description');
     $edit_price = get_inputs('edit_price');
-    $edit_image = $_FILES['edit_image']['name'];
+    $old_image = $_REQUEST['old_image'];
+    
+    $new_image = $_FILES['edit_image']['name'];
+    if($new_image!= ''){
+        
+        $edit_image= $_FILES['edit_image']['name'];
+    }
+    else{
+        $edit_image = $old_image;
+       
+    }
+   
     updateProduct($conn,$id,$edit_name,$edit_description,$edit_price,$edit_image);
 }
 // DELETE PRODUCT

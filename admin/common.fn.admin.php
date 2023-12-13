@@ -73,6 +73,7 @@ function insertProduct($conn,$name,$descripiion,$price,$image){
 }
 // update product
 function updateProduct($conn,$id,$edit_name,$edit_description,$edit_price,$edit_image){
+
     $edit_sql = "UPDATE product SET name='$edit_name', description= '$edit_description', price='$edit_price', image = '$edit_image' WHERE id=$id";
     $result = mysqli_query($conn, $edit_sql);
     if ($result) {
