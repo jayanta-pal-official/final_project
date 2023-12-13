@@ -26,7 +26,7 @@ include("include/common.php");
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Edit - Register user</h3>
-                            <a href="./registered.php" class="btn btn-danger btn-sm  float-right" >Back</a>
+                            <a href="./registered.php" class="btn btn-danger btn-sm  float-right">Back</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -55,11 +55,11 @@ include("include/common.php");
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Role</label>
-                                                    <select name="user_role" class="form-control" required >
+                                                    <select name="user_role" class="form-control" required>
                                                         <option value="">Select </option>
                                                         <option value="0">User</option>
                                                         <option value="1">Admin</option>
-                                                        
+
                                                     </select>
                                                 </div>
 

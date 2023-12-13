@@ -9,40 +9,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['add_product']) {
     $descripiion = get_inputs('descripiion');
     $price = get_inputs('price');
     $image = $_FILES['image']['name'];
-    insertProduct($conn,$name,$descripiion,$price,$image);
+    insertProduct($conn, $name, $descripiion, $price, $image);
 }
 // EDIT PRODUCT
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_edit']) ) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_edit'])) {
     $id = get_inputs('id');
     $edit_name = get_inputs('edit_name');
     $edit_description = get_inputs('edit_description');
     $edit_price = get_inputs('edit_price');
     $old_image = $_REQUEST['old_image'];
-    
+
     $new_image = $_FILES['edit_image']['name'];
-    if($new_image!= ''){
-        
-        $edit_image= $_FILES['edit_image']['name'];
-    }
-    else{
+    if ($new_image != '') {
+
+        $edit_image = $_FILES['edit_image']['name'];
+    } else {
         $edit_image = $old_image;
-       
     }
-   
-    updateProduct($conn,$id,$edit_name,$edit_description,$edit_price,$edit_image);
+
+    updateProduct($conn, $id, $edit_name, $edit_description, $edit_price, $edit_image);
 }
 // DELETE PRODUCT
-// if ( isset($_REQUEST['delete']) ) {
-   $id = $_GET['id'];
-   
-   $delete_query = "DELETE FROM product WHERE id=$id LIMIT 1";
-   $delete_result =mysqli_query($conn,$delete_query);
-   if($delete_result){
-    $_SESSION['status'] = "Successfully delete product";
-        echo "<script>window.location='product.php'</script>";
-   }else{
-    $_SESSION['status'] = "Can't delete product!";
-    echo "<script>window.location='product.php'</script>";
-   }
-// }
-    ?>    
+if (isset($_REQUEST['delete_btn_set'])) {
+    $id = $_POST['delete_id'];
+    $delete_query = "DELETE FROM product WHERE id=$id LIMIT 1";
+    $delete_result = mysqli_query($conn, $delete_query);
+}

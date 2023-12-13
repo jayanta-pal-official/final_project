@@ -25,5 +25,5 @@ if (isset($_REQUEST['update_user'])) {
 
 //Logout user
 if (isset($_REQUEST['logout_user'])) {
-logoutFunction();
+   logoutFunction();
 }

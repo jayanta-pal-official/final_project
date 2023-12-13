@@ -14,11 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = get_inputs('password');
     $query = "SELECT * FROM user WHERE email = '$email' AND password='$password' AND user_role=1";
     $result = mysqli_query($conn, $query);
-    
+
 
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
-        
+
         $_SESSION['log_user'] = [
             'admin_name' => $row['name'],
             'user_role' => $row['user_role']
@@ -28,8 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['login_status'] = "Login Successfully";
         header("location: index.php");
         exit;
-    }
-    else {
+    } else {
         $_SESSION['status'] = "Email and Password not matched ";
         header("location: login.php");
         exit;
@@ -124,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php unset($_SESSION['status']);
                 }
                 ?>
-                
+
                 <div class="row">
                     <div class="col-lg-7 bg-white p-4">
 

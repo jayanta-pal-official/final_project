@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-if(!isset($_SESSION['u_loggedin'])){
+if (!isset($_SESSION['u_loggedin'])) {
     $_SESSION['warning'] = "Login to Access Products";
     header("location:user_login.php");
     exit;
@@ -32,11 +31,10 @@ if(!isset($_SESSION['u_loggedin'])){
 //     //die("ELSE BLOCK");
 //     // if($_SESSION['u_loggedin'] == USER_ROLE){
 //         if($_SESSION['u_loggedin'] == "0"){
-        
+
 //     }else{
 //         $_SESSION['auth_user_status'] = "You are not Authorised as USER";
 //         header("location: ./user_login.php");
 //         exit(0);
 //     }
 // }
-?>

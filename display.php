@@ -30,7 +30,7 @@ if (isset($_SESSION["cart"])) {
         } else {
             $totalPrice = $value["ProductPrice"];
         }
-       
+
         // $from_one = $key + 1;
         echo
         "<tr>

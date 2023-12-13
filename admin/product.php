@@ -116,12 +116,9 @@ include("include/common.php");
                         <td><img src="<?php echo "../upload/" . $row['image'] ?>" alt="image" class="card-img-top" width="50px" height="50px" alt="..."></td>
                         <td>
                           <a href="product_edit.php?id=<?php echo $row['id'] ?>" name="edit" class="btn btn-primary btn-sm">EDIT</a>
-                          <a href="p_code.php?id=<?php echo $row['id'] ?>" name="delete" onclick="return my_function()" class="btn btn-danger btn-sm">DELETE</a>
-                          <!-- <form action="p_code.php" onclick="return my_function(this)" >
-                            <input type="hidden" value="<?php //echo $row['id'] ?>">
-                          <input type="submit"  name="delete" class="btn btn-danger btn-sm" value="delete">
+                          <input type="hidden" class="delete_id" value="<?php echo $row['id'] ?>">
+                          <a href="javascript:void(0)" name="delete" class="confirm_delete btn btn-danger btn-sm">DELETE</a>
 
-                          </form> -->
                         </td>
                       </tr>
                   <?php
@@ -143,29 +140,37 @@ include("include/common.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 <script>
-   function my_function() {
-    return confirm("are you sure ?");
-  }
-</script>
-<script>
-  // window.addEventListener('load', function() {
-    
-  // })
-//   function my_function(form){
-//     swal({
-//   title: "Are you sure?",
-//   text: "Once deleted, you will not be able to recover this imaginary file!",
-//   icon: "warning",
-//   buttons: true,
-//   dangerMode: true,
-// })
-// .then((willDelete) => {
-//   if (willDelete) {
-//     form.submit();
-//   } 
-// });
-// return false;
-//   }
+  $('.confirm_delete').click(function(e) {
+    e.preventDefault();
+    var deleteid = $(this).closest('tr').find('.delete_id').val();
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this Data!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({
+            type: "POST",
+            url: "p_code.php",
+            data: {
+              "delete_btn_set": 1,
+              "delete_id": deleteid,
+            },
+            success: function(response) {
+              swal("data deleted successfully.!", {
+                icon: "success",
+              }).then((result) => {
+                location.reload();
+              });
+            }
+
+          });
+        }
+      });
+  });
 </script>
 <?php
 include("include/footer.php");
