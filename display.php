@@ -77,46 +77,115 @@ if (isset($_SESSION["cart"])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- add font-aswome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* overflow-x: hidden; */
+        }
 
+        .banner {
+            background-image: url(upload/banner.jpeg);
+            /* background-size: cover; */
+            background-repeat: no-repeat;
+            background-size: 100% 50%;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .images {
+            margin: 20px auto;
+        }
+
+        .logo {
+            width: 41px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+
+        }
+
+        .product {
+            margin-top: 250px;
+        }
+
+        .shoping {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container">
-
+        <div class="container-fluid ">
+            <img src="./upload/logo_champu.png" class="logo" alt="logo">&nbsp;
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.php">
-                            <h4>Home</h4>
-                        </a>
+                        <a class="nav-link active" aria-current="page" href="index.php"><b>HOME</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="user_registration.php"><b>REGISTER</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><b>TOTAL PRICE:</b> </a>
+                    </li>
                 </ul>
-                <form class="d-flex">
-                    <!-- <a aria-current="page" href="./logout.php" name="removecart" style="text-decoration: none; color: black; font-size: 25px; "> Remove All <i style="color: red" class="fa-solid fa-trash"></i></a> -->
-                    <a aria-current="page" style="text-decoration: none;  font-size: 30px; "> Cart<i class="fa-solid fa-cart-shopping"><sup style="font-size: 20px;"><?php echo " " . $q; ?></sup></i></a>
-
+                <form class="d-flex ">
+                    <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
                 </form>
             </div>
         </div>
     </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <ul class="navbar-nav  me-auto ">
+            <li class="nav-item">
+                <a href="" class="nav-link">Welcome Guest</a>
+            </li>
+            <li class="nav-item">
+                <a href="user_login.php" class="nav-link">Login</a>
+            </li>
+        </ul>
+
+    </nav>
     <div class="container" style="text-align: center; margin-top:40px ">
-
-    </div>
-    <div class="item_count text-center ">
-        <?php
+        <div class="item_count text-center ">
+            <?php
 
 
-        echo "<b>Total Price : ₹</b>" . $sum . "/- <br>";
-        echo "<b>  Total Quentity : </b>" . $q;
-        ?>
-    </div>
-    <script>
-        function myfunction() {
-            return confirm("are you sure to delete item?")
-        }
-    </script>
+            echo "<b>Total Price : ₹</b>" . $sum . "/- <br>";
+            echo "<b>  Total Quentity : </b>" . $q;
+            ?>
+        </div>
+        <script>
+            function myfunction() {
+                return confirm("are you sure to delete item?")
+            }
+        </script>
 </body>
 
 </html>
