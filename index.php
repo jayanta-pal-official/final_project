@@ -26,6 +26,9 @@ if (isset($_SESSION["cart"])) {
     <link rel="stylesheet" href="./css/style.css">
     <!-- add font-aswome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- sweetalert cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -77,6 +80,9 @@ if (isset($_SESSION["cart"])) {
             font-weight: bold;
             color: black;
         }
+        .card{
+            background-color: whitesmoke;
+        }
     </style>
 </head>
 
@@ -100,9 +106,7 @@ if (isset($_SESSION["cart"])) {
                         <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><b>TOTAL PRICE:</b> </a>
-                    </li>
+                   
                 </ul>
                 <form class="d-flex ">
                 <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
@@ -134,8 +138,8 @@ if (isset($_SESSION["cart"])) {
                     $result = mysqli_query($conn, $select_query);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) { ?>
-                            <div class="col-md-3 mb-2 ">
-                                <form method="POST" action="process.php">
+                            <div class="col-md-3 mb-2  ">
+                                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                                     <div class="card " style="width: 20rem;  ">
                                         <img src="<?php echo "upload/" . $row['image'] ?>" alt="image" class="card-img-top" alt="...">
                                         <div class="card-body">
@@ -164,7 +168,20 @@ if (isset($_SESSION["cart"])) {
             </div>
         </div>
     </div>
-
+<?php
+if (isset($_REQUEST['addcart'])) {
+    $product_name = $_REQUEST['product_name'];
+    $product_price = $_REQUEST['product_price'];
+    $product_image = $_REQUEST['product_image'];
+    $product_quentity = $_REQUEST['product_quentity'];
+    $total_item_price = ($product_quentity * $product_price);
+    $_SESSION['cart'][] = ['ProductName' => $product_name, 'ProductPrice' => $product_price, 'total_price' => $total_item_price, 'ProductImage' => $product_image, 'quentity' => $product_quentity];
+    echo '<script>
+    swal("Added to cart!", "", "success");
+          
+        </script>';
+  }
+?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
