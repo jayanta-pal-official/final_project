@@ -1,5 +1,4 @@
 <?php
-//test
 session_start();
 include("admin/config/dbcon.php");
 $q = 0;
@@ -53,8 +52,9 @@ if (isset($_SESSION["cart"])) {
         }
 
         .logo {
-            width: 4%;
-            height: 3%;
+            width: 41px;
+            height: auto;
+            border-radius: 50%;
         }
 
         .card-img-top {
@@ -72,6 +72,14 @@ if (isset($_SESSION["cart"])) {
         .product {
             margin-top: 250px;
         }
+        .shoping{
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+        }
+        .item{
+            background-color: whitesmoke;
+        }
     </style>
 </head>
 
@@ -79,31 +87,26 @@ if (isset($_SESSION["cart"])) {
     <!-- first child -->
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid ">
-            <img src="./upload/logo.png" class="logo" alt="logo">
+            <img src="./upload/logo_champu.png" class="logo" alt="logo">&nbsp;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php"><b>HOME</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="user_registration.php">Register</a>
+                        <a class="nav-link active" aria-current="page" href="user_registration.php"><b>REGISTER</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="contact.php">Contact</a>
+                        <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="display.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Total Price: </a>
-                    </li>
+                    
+                    
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex ">
+                <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
                 </form>
             </div>
         </div>
@@ -111,11 +114,11 @@ if (isset($_SESSION["cart"])) {
     <!-- second child -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <ul class="navbar-nav  me-auto ">
-            <li class="nav-item">
-                <a href="" class="nav-link">Welcome Guest</a>
+            <li class="nav-item me-auto">
+                <a href="" class="nav-link ">Welcome Guest</a>
             </li>
             <li class="nav-item">
-                <a href="user_login.php" class="nav-link">Login</a>
+                <a href="user_login.php" class="nav-link ">Login</a>
             </li>
         </ul>
 
@@ -132,11 +135,11 @@ if (isset($_SESSION["cart"])) {
                     $result = mysqli_query($conn, $select_query);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) { ?>
-                            <div class="col-md-3 mb-2 ">
+                            <div class="col-md-3 mb-2 d-flex aligns-items-center justify-content-center ">
                                 <form method="POST" action="process.php">
-                                    <div class="card " style="width: 20rem;  ">
+                                    <div class="card item" style="width: 20rem;  ">
                                         <img src="<?php echo "upload/" . $row['image'] ?>" alt="image" class="card-img-top" alt="...">
-                                        <div class="card-body">
+                                        <div class="card-body ">
                                             <h5 class="card-title"><?= $row['name'] ?></h5>
                                             <span><?= $row['description'] ?></span>
                                             <p class="card-text">₹ <?= $row['price'] ?></p>
