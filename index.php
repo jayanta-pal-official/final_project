@@ -113,11 +113,11 @@ if (isset($_SESSION["cart"])) {
     <!-- second child -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <ul class="navbar-nav  me-auto ">
-            <li class="nav-item">
-                <a href="" class="nav-link">Welcome Guest</a>
+            <li class="nav-item me-auto">
+                <a href="" class="nav-link ">Welcome Guest</a>
             </li>
             <li class="nav-item">
-                <a href="user_login.php" class="nav-link">Login</a>
+                <a href="user_login.php" class="nav-link ">Login</a>
             </li>
         </ul>
 
