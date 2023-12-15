@@ -192,9 +192,7 @@ span.price {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
-                    </li>
-                    
-                    
+                    </li>   
                 </ul>
                 <form class="d-flex ">
                 <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
