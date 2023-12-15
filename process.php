@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 
 if(isset($_REQUEST['addcart'])) {
 
@@ -24,11 +24,16 @@ if(isset($_REQUEST['addcart'])) {
       $_SESSION['cart'][] = ['ProductName' => $product_name, 'ProductPrice' => $product_price,'total_price'=>$total_item_price, 'ProductImage' => $product_image, 'quentity' => $product_quentity];
       // echo "<pre>";
       // print_r($_SESSION["cart"]);
-
-      echo'<script>
-        alert("Added to cart")
-        window.location = "index.php"
-      </script>';
+      echo "<script>alert('added to cart!!')
+      window.location= 'index.php'
+      </script>";
+      
+      // echo'<script>
+      // swal("Good job!", "You clicked the button!", "success");
+       
+      // </script>';
+      // header("location:index.php");
+      // exit();
   //   }
     
   // }
