@@ -103,10 +103,6 @@ if (isset($_SESSION["cart"])) {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><b>TOTAL PRICE:</b> </a>
-                    </li>
                 </ul>
                 <form class="d-flex ">
                     <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
@@ -190,7 +186,7 @@ if (isset($_SESSION["cart"])) {
             </table>
             <div class="tota_price">
                 <b> <label>Total Price : </label><strong style="color:aqua"><?php echo " " . $sum . "/-" ?></strong> </b>
-                <button class="btn btn-info">Continue Shopping</button>
+                <a href="index.php" class="btn btn-info">Continue Shopping</a>
                 <a  href="chackout.php" class="btn btn-dark">chackout</a>
             </div>
         </div>
