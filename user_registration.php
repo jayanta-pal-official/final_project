@@ -27,7 +27,11 @@
                         <h1 class="text-center font-weight-bold text-white">Welcome Back!</h1>
                         <hr class="my-4 bg-light myHr" />
                         <p class="text-center font-weight-bolder text-light lead">To keep connected with us please login with your personal info.</p>
+                       <div class="btn_flex">
                         <a href="./user_login.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Sign In</a>
+                        <a href="index.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Back</a>
+    
+                    </div>
                     </div>
                     <div class="col-lg-7 bg-white p-4">
                         <h1 class="text-center font-weight-bold text-primary">USER REGISTER PANEL</h1>
@@ -70,7 +74,10 @@
                 box-sizing: border-box;
                 font-family: "Maven Pro", sans-serif;
             }
-
+            .btn_flex{
+                display: flex;
+                gap: 10px;
+            }
             .wrapper {
                 height: 100vh;
             }

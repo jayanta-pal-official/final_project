@@ -90,8 +90,13 @@ if (isset($_SESSION['u_loggedin'])) {
                     <div class="col-lg-5 d-flex flex-column justify-content-center myColor p-4">
                         <h1 class="text-center font-weight-bold text-white">Hello Friends!</h1>
                         <hr class="my-3 bg-light myHr" />
+                        
+                        
                         <p class="text-center font-weight-bolder text-light lead">Enter your personal details and start your journey with us!</p>
+                        <div class="btn_flex">
                         <a href="./user_registration.php" class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" id="register-link">Sign Up</a>
+                        <a href="index.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Back</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,7 +143,10 @@ if (isset($_SESSION['u_loggedin'])) {
             box-sizing: border-box;
             font-family: "Maven Pro", sans-serif;
         }
-
+        .btn_flex{
+                display: flex;
+                gap: 10px;
+            }
         .wrapper {
             height: 100vh;
         }
