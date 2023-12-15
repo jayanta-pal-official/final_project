@@ -8,6 +8,7 @@ if (isset($_SESSION["cart"])) {
         $_SESSION['q'] = $q;
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,12 +81,23 @@ if (isset($_SESSION["cart"])) {
         .item{
             background-color: whitesmoke;
         }
+        .first_nav {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+       .secound_nav{
+        width: 100%;
+            position: fixed;
+            z-index: 2;
+           
+        }
     </style>
 </head>
 
 <body>
     <!-- first child -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info first_nav">
         <div class="container-fluid ">
             <img src="./upload/logo_champu.png" class="logo" alt="logo">&nbsp;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -112,7 +124,7 @@ if (isset($_SESSION["cart"])) {
         </div>
     </nav>
     <!-- second child -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary secound_nav ">
         <ul class="navbar-nav  me-auto ">
             <li class="nav-item me-auto">
                 <a href="" class="nav-link ">Welcome Guest</a>
