@@ -197,9 +197,7 @@ if (isset($_SESSION["cart"])) {
             <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
           </li>
         </ul>
-        <form class="d-flex ">
-          <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
-        </form>
+
       </div>
     </div>
   </nav>
@@ -207,54 +205,82 @@ if (isset($_SESSION["cart"])) {
   <div class="row">
     <div class="col-75">
       <div class="container">
-        <?php
-             $select_query = "SELECT * FROM user";
-             $result = mysqli_query($conn, $select_query);
-        ?>
         <form action="placeorder_process.php" method="POST">
-
           <div class="row">
             <div class="col-50">
               <h3>Billing Address</h3>
               <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Faraz">
+              <input type="text" id="fname" name="firstname" placeholder="Enter your full name">
 
               <label for="email"><i class="fa fa-envelope"></i> Email</label>
-              <input type="text" id="email" name="email" placeholder="codewithfaraz@example.com">
+              <input type="text" id="email" name="email" placeholder="Enter your email Id">
 
               <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-              <input type="text" id="adr" name="address" placeholder="Mira Bhayandar Road">
+              <input type="text" id="adr" name="address" placeholder="Enter your Address">
 
               <label for="city"><i class="fa fa-institution"></i> City</label>
-              <input type="text" id="city" name="city" placeholder="Mumbai">
+              <input type="text" id="city" name="city" placeholder="Enter your City">
 
               <div class="row">
                 <div class="col-50">
                   <label for="state">State</label>
-                  <input type="text" id="state" name="state" placeholder="MH">
+                  <input type="text" id="state" name="state" placeholder="Enter your State">
                 </div>
 
                 <div class="col-50">
                   <label for="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="400001">
+                  <input type="text" id="zip" name="zip" placeholder="Enter your PIN code">
                 </div>
               </div>
             </div>
           </div>
-          
           <input type="submit" name="placeorder" value="Place Order" class="btn">
         </form>
       </div>
     </div>
+
     <div class="col-25">
       <div class="container">
-        <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-        <p><a href="#">Item 1</a> <span class="price">$105</span></p>
-        <p><a href="#">Item 2</a> <span class="price">$95</span></p>
-        <p><a href="#">Item 3</a> <span class="price">$100</span></p>
-        <p><a href="#">Item 4</a> <span class="price">$50</span></p>
+        <h4>Cart
+          <span class="price" style="color:black">
+            <i class="fa fa-shopping-cart"></i>
+            <sup><b><?php echo $q; ?></b></sup>
+          </span>
+        </h4>
         <hr>
-        <p>Total <span class="price" style="color:black"><b>$350</b></span></p>
+        <?php
+        $sum = 0;
+        $values = $_SESSION['cart'];
+        if (isset($_SESSION["cart"])) { ?>
+          <table class="table table-bordered table-striped text-center">
+            <tr>
+              
+              <th> product Id</th>
+              <th>Product Name</th>
+              <th>Quentity</th>
+              <th>Product Price</th>
+            </tr>
+            <?php foreach ($values as $key => $value) {
+              $sum = $sum + $value['total_price'];
+              $q = $q + $value['quentity'];
+              $_SESSION['q'] = $q;
+              // echo '<pre>'; print_r($values);
+              if (isset($value['total_price']) && $value['total_price'] > 0) {
+                $totalPrice = $value['total_price'];
+              } else {
+                $totalPrice = $value["ProductPrice"];
+              } ?>
+              <tr>
+                
+                <td><?php echo $key ?></td>
+                <td><?php echo $value['ProductName'] ?></td>
+                <td><?php echo $value['quentity'] ?></td>
+                <td><?php echo $value["ProductPrice"]; ?></td>
+              </tr>
+          <?php }
+          } ?>
+          </table>
+          <p>Total <span class="price" style="color:black"><?php echo " " . $sum . "/-" ?></span></p>
       </div>
     </div>
   </div>
