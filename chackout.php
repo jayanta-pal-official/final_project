@@ -94,20 +94,13 @@ if (isset($_SESSION["cart"])) {
                                     <i class="fa fa-shopping-cart"></i>
                                     <sup><b><?php echo $q; ?></b></sup>
                                 </span></h5>
-
                             <hr>
                             <?php
                             $sum = 0;
                             $values = $_SESSION['cart'];
                             if (isset($_SESSION["cart"])) { ?>
                                 <table class="table table-bordered  text-center">
-                                    <!-- <tr>
-                                        <th> product Id</th>
-                                        <th>Product Name</th>
-                                        <th>Product Image</th>
-                                        <th>Quentity</th>
-                                        <th>Product Price</th>
-                                    </tr> -->
+                                 
                                     <?php foreach ($values as $key => $value) {
                                         $sum = $sum + $value['total_price'];
                                         $q = $q + $value['quentity'];
@@ -139,11 +132,8 @@ if (isset($_SESSION["cart"])) {
 
                                 <?php }
                                 } ?>
-
                         </div>
                         <strong class="m-3">Total <span class="float-end fw-bold "><?php echo "₹ " . $sum . "/-" ?></span></strong>
-
-
                     </div>
                 </div>
             </div>
