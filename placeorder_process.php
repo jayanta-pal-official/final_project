@@ -8,7 +8,14 @@ if(isset($_REQUEST['placeorder'])){
     $city=$_REQUEST['city'];
     $state= $_REQUEST['state'];
     $zip =$_REQUEST['zip'];
-    $sql= "INSERT INTO user (name,email,address,city,State,pin) VALUES('$firstname', '$email','$address','$city','$state','$zip')";
+
+    $product_id= $_REQUEST['product_id'];
+    $product_name = $_REQUEST['product_name'];
+    $product_image= $_REQUEST['product_image'];
+    $product_quentity = $_REQUEST['product_quentity'];
+    $product_price = $_REQUEST['product_price'];
+
+    $sql= "INSERT INTO order_details (name,email,address,city,State,pin,product_id,product_name,product_price,product_quentity,status) VALUES('$firstname', '$email','$address','$city','$state','$zip','$product_id', '$product_name', '$product_price','$product_quentity','0')";
     $result=mysqli_query($conn,$sql);
     if($result){
         echo"<script>alert('save')</script>";

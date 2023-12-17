@@ -35,8 +35,12 @@ if (isset($_SESSION["cart"])) {
 
     * {
       box-sizing: border-box;
+      
     }
-
+    .hedar{
+      font-family:Verdana, Geneva, Tahoma, sans-serif
+      
+    }
     .row {
       display: -ms-flexbox;
       display: flex;
@@ -67,11 +71,14 @@ if (isset($_SESSION["cart"])) {
 
     .container {
       background-color: #f2f2f2;
-      padding: 5px 20px 15px 20px;
+      /* padding: 5px 20px 15px 20px; */
       border: 1px solid lightgrey;
       border-radius: 3px;
     }
-
+    .secound_con{
+      margin-top: 20px;
+    }
+    
     input[type=text] {
       width: 100%;
       margin-bottom: 20px;
@@ -201,46 +208,36 @@ if (isset($_SESSION["cart"])) {
       </div>
     </div>
   </nav>
-  <h2>Checkout Form</h2>
-  <div class="row">
-    <div class="col-75">
-      <div class="container">
-        <form action="placeorder_process.php" method="POST">
-          <div class="row">
-            <div class="col-50">
-              <h3>Billing Address</h3>
-              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Enter your full name">
+  <h2 class="hedar">Checkout Form</h2>
 
-              <label for="email"><i class="fa fa-envelope"></i> Email</label>
-              <input type="text" id="email" name="email" placeholder="Enter your email Id">
+  <div class="container">
+    <form action="placeorder_process.php" method="POST">
 
-              <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-              <input type="text" id="adr" name="address" placeholder="Enter your Address">
+      <h3>Billing Address</h3>
+      <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="Enter your full name">
 
-              <label for="city"><i class="fa fa-institution"></i> City</label>
-              <input type="text" id="city" name="city" placeholder="Enter your City">
+      <label for="email"><i class="fa fa-envelope"></i> Email</label>
+      <input type="text" id="email" name="email" placeholder="Enter your email Id">
 
-              <div class="row">
-                <div class="col-50">
-                  <label for="state">State</label>
-                  <input type="text" id="state" name="state" placeholder="Enter your State">
-                </div>
+      <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+      <input type="text" id="adr" name="address" placeholder="Enter your Address">
 
-                <div class="col-50">
-                  <label for="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="Enter your PIN code">
-                </div>
-              </div>
-            </div>
-          </div>
-          <input type="submit" name="placeorder" value="Place Order" class="btn">
-        </form>
+      <label for="city"><i class="fa fa-institution"></i> City</label>
+      <input type="text" id="city" name="city" placeholder="Enter your City">
+
+      <div class="row">
+        <div class="col-50">
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" placeholder="Enter your State">
+        </div>
+        <div class="col-50">
+          <label for="zip">Zip</label>
+          <input type="text" id="zip" name="zip" placeholder="Enter your PIN code">
+        </div>
       </div>
-    </div>
-
-    <div class="col-25">
       <div class="container">
+      <div class="secound_con">
         <h4>Cart
           <span class="price" style="color:black">
             <i class="fa fa-shopping-cart"></i>
@@ -252,11 +249,11 @@ if (isset($_SESSION["cart"])) {
         $sum = 0;
         $values = $_SESSION['cart'];
         if (isset($_SESSION["cart"])) { ?>
-          <table class="table table-bordered table-striped text-center">
+          <table class="table table-bordered  text-center">
             <tr>
-              
               <th> product Id</th>
               <th>Product Name</th>
+              <th>Product Image</th>
               <th>Quentity</th>
               <th>Product Price</th>
             </tr>
@@ -264,26 +261,31 @@ if (isset($_SESSION["cart"])) {
               $sum = $sum + $value['total_price'];
               $q = $q + $value['quentity'];
               $_SESSION['q'] = $q;
-              // echo '<pre>'; print_r($values);
               if (isset($value['total_price']) && $value['total_price'] > 0) {
                 $totalPrice = $value['total_price'];
               } else {
                 $totalPrice = $value["ProductPrice"];
               } ?>
               <tr>
-                
-                <td><?php echo $key ?></td>
-                <td><?php echo $value['ProductName'] ?></td>
-                <td><?php echo $value['quentity'] ?></td>
-                <td><?php echo $value["ProductPrice"]; ?></td>
+                <td><input class="form-control bg-transparent text-center border-0" type="text" name="product_id" value="<?php echo $key ?>"></td>
+                <td><input class="form-control bg-transparent text-center border-0" type="text" name="product_name" value="<?php echo $value['ProductName'] ?>"></td>
+                <td><img class="form-control bg-transparent text-center border-0" src='<?php echo $value['ProductImage']; ?>' width='50' height='50'></td>
+                 <input type="hidden" value="<?php echo $value['ProductImage']; ?>" name="product_image" >
+                <td><input class="form-control bg-transparent text-center border-0" type="text" name="product_quentity" value="<?php echo $value['quentity'] ?>"></td>
+                <td><input class="form-control bg-transparent text-center border-0  " type="text" name="product_price" value="<?php echo $value["ProductPrice"]; ?>"></td>
               </tr>
           <?php }
           } ?>
           </table>
           <p>Total <span class="price" style="color:black"><?php echo " " . $sum . "/-" ?></span></p>
-      </div>
-    </div>
+        </div>
+        </div>
+      <input type="submit" name="placeorder" value="Place Order" class="btn">
+    </form>
   </div>
+
+
+
 </body>
 
 </html>
