@@ -26,7 +26,12 @@ if (isset($_SESSION["cart"])) {
     <link rel="stylesheet" href="./css/style.css">
     <!-- add font-aswome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
+   <!-- jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- sweetalert cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+   <style>
         * {
             box-sizing: border-box;
             margin: 0;
@@ -166,18 +171,17 @@ if (isset($_SESSION["cart"])) {
                             <form action='update.php' method='POST' >
                             <td> <input class='text-center border-0 ' name='quentity' type='number' min ='1' max='10'  value='$value[quentity]' ></td>
                             <td>" . $totalPrice . "</td>
-                            <input type='hidden' name='key' value='$key'>
+                            <input type='hidden' name='key' class='id' value='$key'>
                             <input type='hidden' name='product_name' value='$value[ProductName]'>
                             <input type='hidden' name='product_image' value='$value[ProductImage]'>
                             <input type='hidden' name='update_item' value='$value[ProductName]'>
                             <input type='hidden' name='ProductPrice' value='$value[ProductPrice]'>
                             <td><input type='submit' class ='btn-warning' name='update' value='Update'></input></td>
                             </form>
-                           
-                            <form action='delete.php' method='POST' >
-                            <input type='hidden' name='delete_key' value='$key'>
-                            <td><input type='submit' name='remove' class='btn-danger ' value='Remove' onclick= 'return myfunction()' ></input></td> 
+                            <form action='' method='POST' >
+                            <input type='hidden' class='delete_key' name='delete_key' value='$key'>
                             <input type='hidden' name='remove_item' value='$value[ProductName]'>
+                            <td><input type='button' name='remove' class='remove btn-danger ' value='Remove' onclick='removeCart()' ></input></td>
                             </form>
                             </tr>";
                     }
@@ -191,6 +195,39 @@ if (isset($_SESSION["cart"])) {
             </div>
         </div>
     </div>
+    <script>
+ $(".remove").click(function removeCart(e) {
+    e.preventDefault();
+    var delete_id = $(this).closest('tr').find('.id').val();
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this Data!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({
+            type: "POST",
+            url: "delete.php",
+            data: {
+              
+              "delete_id": delete_id,
+            },
+            success: function(response) {
+              swal("data deleted successfully.!", {
+                icon: "success",
+              }).then((result) => {
+                location.reload();
+              });
+            }
+
+          });
+        }
+      });
+  });
+</script>
 </body>
 
 </html>

@@ -1,8 +1,9 @@
 <?php
 session_start();
+$id= $_POST['delete_id'];
 if (!empty($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $key => $value) {
-        if ($key == $_REQUEST['delete_key']) {
+        if ($key == $id) {
             unset($_SESSION['cart'][$key]);
             echo "<script>
             alert('Item Removed');
