@@ -5,4 +5,7 @@ if(isset($_SESSION['order'])){
     echo "<pre>";
     print_r($_SESSION['order']);
 }
+
+// $last_id = $conn->insert_id;
+
 ?>
