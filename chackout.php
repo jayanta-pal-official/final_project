@@ -22,7 +22,18 @@ if (isset($_SESSION["cart"])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- add font-aswome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script>
 
+    <script src="admin/assets//dist/js/form.validation.js"></script>
+
+    <style>
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,31 +67,31 @@ if (isset($_SESSION["cart"])) {
                         <div class="col-md-7 ">
                             <h5>Basic Details</h5>
                             <hr>
-                            <form action="placeorder_process.php" method="POST">
+                            <form action="placeorder_process.php" method="POST" id="chackout_form">
                                 <div class="row">
 
                                     <div class="col-md-12 mb-3">
-                                        <label class="fw-bold" for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                        <input class="form-control" type="text" id="fname" name="firstname" placeholder="Enter your full name" required >
+                                        <label class="fw-bold" for="fname"><i class="fa fa-user"></i> Full Name<strong class="text-danger">*</strong></label>
+                                        <input class="form-control" type="text" id="fname" name="firstname" placeholder="Enter your full name" required>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label class="fw-bold" for="email"><i class="fa fa-envelope"></i> Email</label>
+                                        <label class="fw-bold" for="email"><i class="fa fa-envelope"></i> Email <strong class="text-danger">*</strong></label>
                                         <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email Id" required>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label class="fw-bold" for="adr"><i class="fa-solid fa-address-card"></i> Address</label>
+                                        <label class="fw-bold" for="adr"><i class="fa-solid fa-address-card"></i> Address <strong class="text-danger">*</strong></label>
                                         <input class="form-control" type="text" id="adr" name="address" placeholder="Enter your Address" required>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label class="fw-bold" for="city"><i class="fa fa-institution"></i> City</label>
+                                        <label class="fw-bold" for="city"><i class="fa fa-institution"></i> City <strong class="text-danger">*</strong></label>
                                         <input class="form-control" type="text" id="city" name="city" placeholder="Enter your City" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="fw-bold" for="state"> <i class="fa-solid fa-globe"></i> State</label>
+                                        <label class="fw-bold" for="state"> <i class="fa-solid fa-globe"></i> State <strong class="text-danger">*</strong></label>
                                         <input class="form-control" type="text" id="state" name="state" placeholder="Enter your State" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="fw-bold" for="zip"><i class="fa-solid fa-location-pin"></i> Zip</label>
+                                        <label class="fw-bold" for="zip"><i class="fa-solid fa-location-pin"></i> Zip <strong class="text-danger">*</strong></label>
                                         <input class="form-control" type="text" id="zip" name="zip" placeholder="Enter your PIN code" required>
                                     </div>
 
@@ -100,7 +111,7 @@ if (isset($_SESSION["cart"])) {
                             $values = $_SESSION['cart'];
                             if (isset($_SESSION["cart"])) { ?>
                                 <table class="table table-bordered  text-center">
-                                 
+
                                     <?php foreach ($values as $key => $value) {
                                         $sum = $sum + $value['total_price'];
                                         $q = $q + $value['quentity'];
