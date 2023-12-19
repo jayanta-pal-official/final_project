@@ -33,6 +33,11 @@ if (isset($_SESSION["cart"])) {
             color: red;
             font-weight: bold;
         }
+        .shoping {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+        }
     </style>
 </head>
 
@@ -55,7 +60,9 @@ if (isset($_SESSION["cart"])) {
                         <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
                     </li>
                 </ul>
-
+                <form class="d-flex ">
+                    <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
+                </form>
             </div>
         </div>
     </nav>
