@@ -98,14 +98,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="code.php" class="nav-link">
            
             <form action="code.php" method="POST">
-            <i class="fa-solid fa-right-from-bracket"></i>&nbsp<input type="submit" name="logout_user" class="text-white-50 bg-transparent text-center border-0"   value="Logout">
+            <i class="fa-solid fa-right-from-bracket"></i>&nbsp<input type="submit" name="logout_user_sideber" class="text-white-50 bg-transparent text-center border-0"   value="Logout">
           </form>
             </a>
-          </li>
+          </li> -->
       </nav>
       <!-- /.sidebar-menu -->
     </div>
