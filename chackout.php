@@ -70,11 +70,14 @@ if (isset($_SESSION["cart"])) {
         <div class="container">
             <div class="card">
                 <div class="card-body bg-light shadow">
+                <form action="placeorder_process.php" method="POST" id="chackout_form">
+
                     <div class="row">
+
                         <div class="col-md-7 ">
                             <h5>Basic Details</h5>
                             <hr>
-                            <form action="placeorder_process.php" method="POST" id="chackout_form">
+                            <!-- <form action="placeorder_process.php" method="POST" id="chackout_form"> -->
                                 <div class="row">
 
                                     <div class="col-md-12 mb-3">
@@ -105,7 +108,7 @@ if (isset($_SESSION["cart"])) {
                                 </div>
                                 <input type="submit" class="btn btn-primary flot-end col-md-12" name="placeorder" value="Place Order" class="btn">
 
-                            </form>
+                            <!-- </form> -->
                         </div>
                         <div class="col-md-5">
                             <h5>order details <span class="float-end" style="color:black">
@@ -119,11 +122,11 @@ if (isset($_SESSION["cart"])) {
                             if (isset($_SESSION["cart"])) { ?>
                                 <table class="table table-bordered  text-center">
 
-                                    <?php foreach ($values as $key => $value) {
+                                    <?php foreach ($values as $key => $value) { 
                                         $sum = $sum + $value['total_price'];
                                         $q = $q + $value['quentity'];
                                         $_SESSION['q'] = $q;
-                                        if (isset($value['total_price']) && $value['total_price'] > 0) {
+                                        if (isset($value['total_price']) && $value['total_price'] >  0) {
                                             $totalPrice = $value['total_price'];
                                         } else {
                                             $totalPrice = $value["ProductPrice"];
@@ -135,12 +138,17 @@ if (isset($_SESSION["cart"])) {
                                                 </div>
                                                 <div class="col-md-5 text-center">
                                                     <input class="form-control bg-transparent text-center border-0" type="text" name="product_name" value="<?php echo $value['ProductName'] ?>">
+                                                    <input  type="hidden" name="product_name" value="<?php echo $value['ProductName'] ?>">
+                                                    <input type="hidden" name="product_id" value="<?php echo $key  ?>" >        
+
                                                 </div>
                                                 <div class="col-md-3 text-center">
                                                     <input class="form-control bg-transparent text-center border-0" type="text" name="product_quentity" value="<?php echo $value['quentity'] ?>">
+                                                    <input type="hidden" name="product_quentity" value="<?php echo $value['quentity'] ?>">
                                                 </div>
                                                 <div class="col-md-2 text-center">
                                                     <input class="form-control bg-transparent text-center border-0  " type="text" name="product_price" value="<?php echo "₹ " . $value["ProductPrice"]; ?>">
+                                                    <input  type="hidden" name="product_price" value="<?php echo $value["ProductPrice"]; ?>">
                                                 </div>
 
                                             </div>
@@ -152,7 +160,9 @@ if (isset($_SESSION["cart"])) {
                                 } ?>
                         </div>
                         <strong class="m-3">Total <span class="float-end fw-bold "><?php echo "₹ " . $sum . "/-" ?></span></strong>
+                        <input type="hidden" name="total_price" value="<?php echo $sum  ?>" >        
                     </div>
+                            </form>
                 </div>
             </div>
         </div>
