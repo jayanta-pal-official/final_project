@@ -117,9 +117,6 @@ if (isset($_SESSION["cart"])) {
                         <a class="nav-link active" aria-current="page" href="index.php"><b>HOME</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="user_registration.php"><b>REGISTER</b></a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
                     </li>
                 </ul>
@@ -129,19 +126,34 @@ if (isset($_SESSION["cart"])) {
             </div>
         </div>
     </nav>
-    <!-- second child -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary secound_nav ">
+   <!-- second child -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary secound_nav ">
         <ul class="navbar-nav  me-auto ">
             <li class="nav-item me-auto">
-                <a href="" class="nav-link ">Welcome Guest</a>
+                <?php
+                if(isset($_SESSION['u_loggedin'])){
+                    $name =  $_SESSION['user_details']['user_name']; ?>
+                    <a href="" class="nav-link ">Welcome <strong class="text-warning" ><?= strtok($name," ") ?></strong></a>
+                <?php }
+                else{ ?>
+                    <a href="" class="nav-link ">Welcome Guest</a>
+               <?php  }
+                ?>
+                
             </li>
             <li class="nav-item">
-                <a href="user_login.php" class="nav-link ">Login</a>
+            <?php
+                if(isset($_SESSION['u_loggedin'])){  ?>
+                    <a href="user_logout.php" class="nav-link "><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+               <?php  } 
+                else{ ?>
+                    <a href="user_login.php" class="nav-link ">Login</a><i class="fa-solid fa-right-from-bracket"></i>
+               <?php }?>
+                
             </li>
         </ul>
 
     </nav>
-
     <div class="content-wrapper banner">
         <div class="row text-center products_bg">
             <!-- products -->
