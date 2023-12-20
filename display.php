@@ -31,118 +31,15 @@ if (isset($_SESSION["cart"])) {
 <!-- sweetalert cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-   <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            /* overflow-x: hidden; */
-        }
 
-        .banner {
-            background-image: url(upload/banner.jpeg);
-            /* background-size: cover; */
-            background-repeat: no-repeat;
-            background-size: 100% 50%;
-        }
-
-        .card-img-top {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }
-
-        .images {
-            margin: 20px auto;
-        }
-
-        .logo {
-            width: 41px;
-            height: auto;
-            border-radius: 50%;
-        }
-
-        .card-img-top {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }
-
-        .banner {
-            width: 100%;
-            height: 100vh;
-
-        }
-
-        .product {
-            margin-top: 250px;
-        }
-
-        .shoping {
-            font-size: 25px;
-            font-weight: bold;
-            color: black;
-        }
-        .result{
-            margin-top: 30px;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- first child -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container-fluid ">
-            <img src="./upload/logo_champu.png" class="logo" alt="logo">&nbsp;
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php"><b>HOME</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
-                    </li>
-                </ul>
-                <form class="d-flex ">
-                    <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
-                </form>
-            </div>
-        </div>
-    </nav>
-   <!-- second child -->
-   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary secound_nav ">
-        <ul class="navbar-nav  me-auto ">
-            <li class="nav-item me-auto">
-                <?php
-                if(isset($_SESSION['u_loggedin'])){
-                    $name =  $_SESSION['user_details']['user_name']; ?>
-                    <a href="" class="nav-link ">Welcome <strong class="text-warning" ><?= strtok($name," ") ?></strong></a>
-                <?php }
-                else{ ?>
-                    <a href="" class="nav-link ">Welcome Guest</a>
-               <?php  }
-                ?>
-                
-            </li>
-            <li class="nav-item">
-            <?php
-                if(isset($_SESSION['u_loggedin'])){  ?>
-                    <a href="user_logout.php" class="nav-link "><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
-               <?php  } 
-                else{ ?>
-                    <a href="user_login.php" class="nav-link ">Login</a><i class="fa-solid fa-right-from-bracket"></i>
-               <?php }?>
-                
-            </li>
-        </ul>
-
-    </nav>
-    <div class="container ">
+<?php include_once('./user_nav.php') ?>
+   
+    <div class="container " style="margin-top: 90px;" >
         <div class="container-item">
-            <table class="table table-bordered text-center result ">
+            <table class="table table-bordered text-center ">
                 <tr>
                     <th> Index no</th>
                     <th>Product Name</th>

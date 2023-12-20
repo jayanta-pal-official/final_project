@@ -33,66 +33,14 @@ if (isset($_SESSION["cart"])) {
             color: red;
             font-weight: bold;
         }
-        .shoping {
-            font-size: 25px;
-            font-weight: bold;
-            color: black;
-        }
+       
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container-fluid ">
-            <img src="./upload/logo_champu.png" class="logo" alt="logo" style="width: 41px; height: auto; border-radius: 50%;">&nbsp;
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php"><b>HOME</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
-                    </li>
-                </ul>
-                <form class="d-flex ">
-                    <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
-                </form>
-            </div>
-        </div>
-    </nav>
-     <!-- second child -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary secound_nav ">
-        <ul class="navbar-nav  me-auto ">
-            <li class="nav-item me-auto">
-                <?php
-                if(isset($_SESSION['u_loggedin'])){
-                    $name =  $_SESSION['user_details']['user_name']; ?>
-                    <a href="" class="nav-link ">Welcome <strong class="text-warning" ><?= strtok($name," ") ?></strong></a>
-                <?php }
-                else{ ?>
-                    <a href="" class="nav-link ">Welcome Guest</a>
-               <?php  }
-                ?>
-                
-            </li>
-            <li class="nav-item">
-            <?php
-                if(isset($_SESSION['u_loggedin'])){  ?>
-                    <a href="user_logout.php" class="nav-link "><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
-               <?php  } 
-                else{ ?>
-                    <a href="user_login.php" class="nav-link ">Login</a><i class="fa-solid fa-right-from-bracket"></i>
-               <?php }?>
-                
-            </li>
-        </ul>
-
-    </nav>
+<?php include_once('./user_nav.php') ?>
     <div class="py-5">
-        <div class="container">
+        <div class="container mt-4" >
             <div class="card">
                 <div class="card-body bg-light shadow">
                 <form action="placeorder_process.php" method="POST" id="chackout_form">
