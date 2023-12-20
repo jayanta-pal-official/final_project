@@ -81,28 +81,28 @@ if (isset($_SESSION["cart"])) {
                                 <div class="row">
 
                                     <div class="col-md-12 mb-3">
-                                        <label class="fw-bold" for="fname"><i class="fa fa-user"></i> Full Name<strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="text" id="fname" name="firstname" placeholder="Enter your full name" required>
+                                        <label class="fw-bold" for="firstname"><i class="fa fa-user"></i> Full Name<strong class="text-danger">*</strong></label>
+                                        <input class="form-control" type="text" id="fname" name="firstname" placeholder="Enter your full name" >
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label class="fw-bold" for="email"><i class="fa fa-envelope"></i> Email <strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email Id" required>
+                                        <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email Id" >
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label class="fw-bold" for="adr"><i class="fa-solid fa-address-card"></i> Address <strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="text" id="adr" name="address" placeholder="Enter your Address" required>
+                                        <label class="fw-bold" for="address"><i class="fa-solid fa-address-card"></i> Address <strong class="text-danger">*</strong></label>
+                                        <input class="form-control" type="text" id="adr" name="address" placeholder="Enter your Address" >
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label class="fw-bold" for="city"><i class="fa fa-institution"></i> City <strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="text" id="city" name="city" placeholder="Enter your City" required>
+                                        <input class="form-control" type="text" id="city" name="city" placeholder="Enter your City" >
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="fw-bold" for="state"> <i class="fa-solid fa-globe"></i> State <strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="text" id="state" name="state" placeholder="Enter your State" required>
+                                        <input class="form-control" type="text" id="state" name="state" placeholder="Enter your State" >
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="fw-bold" for="zip"><i class="fa-solid fa-location-pin"></i> Zip <strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="text" id="zip" name="zip" placeholder="Enter your PIN code" required>
+                                        <input class="form-control" type="text" id="zip" name="zip" placeholder="Enter your PIN code" >
                                     </div>
 
                                 </div>
@@ -159,7 +159,7 @@ if (isset($_SESSION["cart"])) {
                                 <?php }
                                 } ?>
                         </div>
-                        <strong class="m-3">Total <span class="float-end fw-bold "><?php echo "₹ " . $sum . "/-" ?></span></strong>
+                        <strong class="m-3">Total <span class="float-end fw-bold "><i class="fa-solid fa-indian-rupee-sign"></i><?php echo " ". $sum . "/-" ?></span></strong>
                         <input type="hidden" name="total_price" value="<?php echo $sum  ?>" >        
                     </div>
                             </form>
