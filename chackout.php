@@ -91,8 +91,10 @@ if (isset($_SESSION["cart"])) {
                             <hr>
                             <?php
                             $sum = 0;
-                            $values = $_SESSION['cart'];
-                            if (isset($_SESSION["cart"])) { ?>
+                            
+                            if (isset($_SESSION["cart"])) {
+                                $values = $_SESSION['cart'];
+                                 ?>
                                 <table class="table table-bordered  text-center">
 
                                     <?php foreach ($values as $key => $value) { 
@@ -116,7 +118,7 @@ if (isset($_SESSION["cart"])) {
 
                                                 </div>
                                                 <div class="col-md-3 text-center">
-                                                    <input class="form-control bg-transparent text-center border-0" type="text" name="product_quentity" value="<?php echo $value['quentity'] ?>">
+                                                    <input class="form-control bg-transparent text-center border-0" type="text" name="product_quentity" value="<?php echo "X".$value['quentity'] ?>">
                                                     <input type="hidden" name="product_quentity" value="<?php echo $value['quentity'] ?>">
                                                 </div>
                                                 <div class="col-md-2 text-center">
@@ -130,6 +132,9 @@ if (isset($_SESSION["cart"])) {
                                         </div>
 
                                 <?php }
+                                }
+                                else{
+                                    echo "no product in cart" ;
                                 } ?>
                         </div>
                         <hr>

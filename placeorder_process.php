@@ -47,11 +47,11 @@ if(isset($_SESSION['cart']))
       VALUES('$last_id','$product_id','$product_name','$product_price','$product_quentity','$total_price')";
       $result_item =mysqli_query($conn,$sql_product_item);
       }
-     if($result_item){ ?>
-      alert("Succesfully insert");
-    <?php  }
-     //  header('location:order_confirm.php');
-      //  exit;
+     if($result_item){ 
+       header('location:order_confirm.php');
+       unset($_SESSION['cart']);
+       exit;
+       }
     }
 }
 // }

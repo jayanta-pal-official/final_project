@@ -85,29 +85,22 @@ include("include/common.php");
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Product List</h3>
-              <a href="#" class="btn btn-primary btn-sm  float-right" data-toggle="modal" data-target="#Add_user_model">Add Product</a>
+              <h3 class="card-title">Order List</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped text-center">
                 <thead>
                   <tr>
-                    <th>SL NO</th>
-                    <th>NAME</th>
-                    <th>EMAIL</th>
-                    <th>ADDRESS</th>
-                    <th>STATE</th>
-                    <th>CITY</th>
-                    <th>PIN</th>
-                    <th>product<br>id</th>
-                    <!-- <th>product<br>name</th>
-                    <th>product<br>price</th>
-                    <th>product<br>quentity</th>
-                    <th>TOTAL</th> -->
-                    <th>ACTION</th>
-                   
-                  
+                    <th>Sl No</th>
+                    <th>Produts <br>Id</th>
+                    <th>User Id</th>
+                    <th>Produts <br>Name</th>
+                    <th>Produts <br>Price</th>
+                    <th>Quentity</th>
+                    <th>Total <br>Price</th>
+                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -119,27 +112,27 @@ include("include/common.php");
                     while ($row = mysqli_fetch_assoc($result)) { ?>
                       <tr>
                         <td><?= $number ?></td>
-                        <td><?= $row['name'] ?></td>
-                        <td><?= $row['email'] ?></td>
-                        <td><?= $row['address'] ?></td>
-                        <td><?= $row['State'] ?></td>
-                        <td><?= $row['city'] ?></td>
-                        <td><?= $row['pin'] ?></td>
                         <td><?= $row['product_id'] ?></td>
-                       
-                        
-                        
+                        <td><?= $row['user_id'] ?></td>
+                        <td><?= $row['product_name'] ?></td>
+                        <td><?= $row['product_price'] ?></td>
+                        <td><?="X". $row['quantity'] ?></td>
+                        <td><?= $row['total_price'] ?></td>
+                        <?php if($row['status'] == "active") { ?>
+                           <td class="text-success" ><?= $row['status'] ?></td>
+                       <?php }else{ ?>
+                          <td class="text-danger" ><?= $row['status'] ?></td>
+                        <?php }?>
                         <td>
                           <a href="#" name="cancel" class="btn btn-danger btn-sm">Cancel</a>
-                          <!-- <input type="hidden" class="delete_id" value="<?php echo $row['id'] ?>"> -->
-                          <!-- <a href="javascript:void(0)" name="delete" class="confirm_delete btn btn-danger btn-sm">Delete</a> -->
-
-                        </td>
+                          </td>
                       </tr>
                   <?php
                       $number++;
                     }
-                  } ?>
+                  } else{
+                    echo '<h4 class="text-danger">No data available </h4>';
+                  }?>
                 </tbody>
               </table>
             </div>
