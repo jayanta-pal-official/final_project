@@ -107,7 +107,7 @@ if (isset($_SESSION["cart"])) {
                                         <div class="mb-1 border">
                                             <div class="row align-items-center">
                                                 <div class="col-md-2 align-items-center">
-                                                    <img class="form-control bg-transparent text-center border-0" src='<?php echo $value['ProductImage']; ?>' width='50' height='50'>
+                                                    <img class="form-control bg-transparent text-center border-0" name='product_image' src='<?php echo $value['ProductImage']; ?>' width='50' height='50'>
                                                 </div>
                                                 <div class="col-md-5 text-center">
                                                     <input class="form-control bg-transparent text-center border-0" type="text" name="product_name" value="<?php echo $value['ProductName'] ?>">
@@ -132,7 +132,8 @@ if (isset($_SESSION["cart"])) {
                                 <?php }
                                 } ?>
                         </div>
-                        <strong class="m-3">Total <span class="float-end fw-bold "><i class="fa-solid fa-indian-rupee-sign"></i><?php echo " ". $sum . "/-" ?></span></strong>
+                        <hr>
+                        <strong>Total <span class="float-end fw-bold "><i class="fa-solid fa-indian-rupee-sign"></i><?php echo " ". $sum . "/-" ?></span></strong>
                         <input type="hidden" name="total_price" value="<?php echo $sum  ?>" >        
                     </div>
                             </form>
