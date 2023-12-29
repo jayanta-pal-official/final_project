@@ -386,9 +386,11 @@ header h2 {
 <!-- bit of a bio; who are you? -->
 <div class="profile-bio">
 
-  <p>Hello there!</p>
-  <p>I am a full stack web developer. I mainly work with PHP, HTML, CSS, JS .
-    <br />I also play well with Photoshop, Corel Draw, After Effects and other cool stuff.</p>
+  <p><a href = "mailto:paljayanta18@gmail.com?subject = body = Message" class="text-white text-decoration-none" >
+  <i class="fa-solid fa-envelope"></i> <span >paljayanta18@gmail.com</span> 
+</a></p>
+  <p>I am a full stack web developer. I mainly work with PHP, HTML, CSS, JS.
+    <br />I also play well with Photoshop.</p>
 
 </div>
 
@@ -415,6 +417,7 @@ header h2 {
     <i class="fa-brands fa-instagram shadow-lg p-2 mb-2 bg-white  rounded-circle"></i>
     </a>
   </li>
+ 
 
   <!-- add or remove social profiles as you see fit -->
 
