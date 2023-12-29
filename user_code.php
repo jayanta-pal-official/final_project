@@ -13,6 +13,8 @@ if (isset($_REQUEST['submit'])) {
 
         $_SESSION['user_details'] = [
             'user_name' => $row['name'],
+            'user_email' => $row['email'],
+            'user_id'=> $row['id'],
             // 'user_role' => $row['user_role'],
         ];
         // $user_role = $_SESSION['user_details']['user_role'];

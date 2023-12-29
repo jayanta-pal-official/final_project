@@ -60,12 +60,19 @@ if (isset($_SESSION["cart"])) {
                                 <div class="row">
 
                                     <div class="col-md-12 mb-3">
+                                    <input class="form-control" type="hidden" id="id" name="id"  value="<?php if(isset($_SESSION['u_loggedin'])){
+                                            echo $_SESSION['user_details']['user_id'];
+                                        } ?>">
                                         <label class="fw-bold" for="firstname"><i class="fa fa-user"></i> Full Name<strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="text" id="fname" name="firstname" placeholder="Enter your full name" >
+                                        <input class="form-control" type="text" id="fname" name="firstname" placeholder="Enter your full name"  value="<?php if(isset($_SESSION['u_loggedin'])){
+                                            echo $_SESSION['user_details']['user_name'];
+                                        } ?>" >
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label class="fw-bold" for="email"><i class="fa fa-envelope"></i> Email <strong class="text-danger">*</strong></label>
-                                        <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email Id" >
+                                        <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email Id"  value="<?php if(isset($_SESSION['u_loggedin'])){
+                                            echo $_SESSION['user_details']['user_email'];
+                                        } ?>" >
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label class="fw-bold" for="address"><i class="fa-solid fa-address-card"></i> Address <strong class="text-danger">*</strong></label>
