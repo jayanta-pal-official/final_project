@@ -64,7 +64,6 @@
               </li>
             </ul>
           </li>
-
         <li class="nav-header">Settings</li>
         <li class="nav-item">
             <a href="admin_profile.php" class="nav-link">
@@ -90,21 +89,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="order.php" class="nav-link">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i><p>
-                  &nbsp&nbsp Order
-              </p>
-            </a>
-          </li>
-          <!-- <li class="nav-item">
-            <a href="code.php" class="nav-link">
-           
-            <form action="code.php" method="POST">
-            <i class="fa-solid fa-right-from-bracket"></i>&nbsp<input type="submit" name="logout_user_sideber" class="text-white-50 bg-transparent text-center border-0"   value="Logout">
-          </form>
-            </a>
-          </li> -->
       </nav>
       <!-- /.sidebar-menu -->
     </div>
