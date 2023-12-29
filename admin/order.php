@@ -105,7 +105,8 @@ include("include/common.php");
                 </thead>
                 <tbody>
                   <?php
-                  $select_query = "SELECT * FROM order_details";
+                  $id= $_GET['id'];
+                  $select_query = "SELECT * FROM order_details WHERE user_id = '$id'";
                   $result = mysqli_query($conn, $select_query);
                   $number = 1;
                   if (mysqli_num_rows($result) > 0) {

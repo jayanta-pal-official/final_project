@@ -125,6 +125,9 @@ include("include/common.php");
                       </td>
                       <td><a href="register_edit.php?id=<?php echo $row['id'] ?>" class="btn btn-info btn-sm">EDIT</a>
                         <a href="user_delete.php?id=<?php echo $row['id'] ?>" onclick="return my_function()" class="btn btn-danger btn-sm">DELETE</a>
+                        <?php if($row['user_role'] == "0"){ ?>
+                        <a href="order.php?id=<?php echo $row['id'] ?>"  class="btn btn-success btn-sm">VIEW PRODUCT <i class="fa-regular fa-eye"></i></a>
+                        <?php } ?>
                       </td>
                     </tr>
 
