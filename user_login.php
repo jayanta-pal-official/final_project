@@ -23,6 +23,62 @@ if (isset($_SESSION['u_loggedin'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Maven Pro", sans-serif;
+        }
+
+        .btn_flex {
+            display: flex;
+            gap: 10px;
+        }
+
+        .wrapper {
+            height: 100vh;
+        }
+
+        .myColor {
+            background-image: linear-gradient(to right, #f83600 50%, #f9d423 150%);
+        }
+
+        .myShadow {
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .myBtn {
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 20px;
+            background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+            border: none;
+        }
+
+        .myBtn:hover {
+            background-image: linear-gradient(to right, #495aff 0%, #0acffe 100%);
+        }
+
+        .myHr {
+            height: 2px;
+            border-radius: 100px;
+        }
+
+        .myLinkBtn {
+            border-radius: 100px;
+            width: 50%;
+            border: 2px solid #fff;
+        }
+
+        @media (max-width: 720px) {
+            .wrapper {
+                margin: 2px;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-info">
@@ -90,12 +146,12 @@ if (isset($_SESSION['u_loggedin'])) {
                     <div class="col-lg-5 d-flex flex-column justify-content-center myColor p-4">
                         <h1 class="text-center font-weight-bold text-white">Hello Friends!</h1>
                         <hr class="my-3 bg-light myHr" />
-                        
-                        
+
+
                         <p class="text-center font-weight-bolder text-light lead">Enter your personal details and start your journey with us!</p>
                         <div class="btn_flex">
-                        <a href="./user_registration.php" class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" id="register-link">Sign Up</a>
-                        <a href="index.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Back</a>
+                            <a href="./user_registration.php" class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" id="register-link">Sign Up</a>
+                            <a href="index.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Back</a>
                         </div>
                     </div>
                 </div>
@@ -134,66 +190,10 @@ if (isset($_SESSION['u_loggedin'])) {
         </div>
         <!-- Forgot Password Form End -->
     </div>
-    <style>
-        @import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&display=swap");
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Maven Pro", sans-serif;
-        }
-        .btn_flex{
-                display: flex;
-                gap: 10px;
-            }
-        .wrapper {
-            height: 100vh;
-        }
-
-        .myColor {
-            background-image: linear-gradient(to right, #f83600 50%, #f9d423 150%);
-        }
-
-        .myShadow {
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .myBtn {
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 20px;
-            background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
-            border: none;
-        }
-
-        .myBtn:hover {
-            background-image: linear-gradient(to right, #495aff 0%, #0acffe 100%);
-        }
-
-        .myHr {
-            height: 2px;
-            border-radius: 100px;
-        }
-
-        .myLinkBtn {
-            border-radius: 100px;
-            width: 50%;
-            border: 2px solid #fff;
-        }
-
-        @media (max-width: 720px) {
-            .wrapper {
-                margin: 2px;
-            }
-        }
-    </style>
-
     <!-- jQuery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

@@ -7,7 +7,62 @@
     <title>register</title>
     <!-- Bootstrap 4 CSS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&display=swap");
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Maven Pro", sans-serif;
+        }
+
+        .btn_flex {
+            display: flex;
+            gap: 10px;
+        }
+
+        .wrapper {
+            height: 100vh;
+        }
+
+        .myColor {
+            background-image: linear-gradient(to right, #f83600 50%, #f9d423 150%);
+        }
+
+        .myShadow {
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .myBtn {
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 20px;
+            background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+            border: none;
+        }
+
+        .myBtn:hover {
+            background-image: linear-gradient(to right, #495aff 0%, #0acffe 100%);
+        }
+
+        .myHr {
+            height: 2px;
+            border-radius: 100px;
+        }
+
+        .myLinkBtn {
+            border-radius: 100px;
+            width: 50%;
+            border: 2px solid #fff;
+        }
+
+        @media (max-width: 720px) {
+            .wrapper {
+                margin: 2px;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-info">
@@ -27,11 +82,10 @@
                         <h1 class="text-center font-weight-bold text-white">Welcome Back!</h1>
                         <hr class="my-4 bg-light myHr" />
                         <p class="text-center font-weight-bolder text-light lead">To keep connected with us please login with your personal info.</p>
-                       <div class="btn_flex">
-                        <a href="./user_login.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Sign In</a>
-                        <a href="index.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Back</a>
-    
-                    </div>
+                        <div class="btn_flex">
+                            <a href="./user_login.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Sign In</a>
+                            <a href="index.php" class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Back</a>
+                        </div>
                     </div>
                     <div class="col-lg-7 bg-white p-4">
                         <h1 class="text-center font-weight-bold text-primary">USER REGISTER PANEL</h1>
@@ -49,7 +103,6 @@
                                 <label>Phone number</label>
                                 <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Phone number">
                             </div>
-
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="text" name="password" id="password" class="form-control" placeholder="Password">
@@ -64,61 +117,6 @@
                 </div>
             </div>
         </div>
-
-        <style>
-            @import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&display=swap");
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Maven Pro", sans-serif;
-            }
-            .btn_flex{
-                display: flex;
-                gap: 10px;
-            }
-            .wrapper {
-                height: 100vh;
-            }
-
-            .myColor {
-                background-image: linear-gradient(to right, #f83600 50%, #f9d423 150%);
-            }
-
-            .myShadow {
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-            }
-
-            .myBtn {
-                border-radius: 50px;
-                font-weight: bold;
-                font-size: 20px;
-                background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
-                border: none;
-            }
-
-            .myBtn:hover {
-                background-image: linear-gradient(to right, #495aff 0%, #0acffe 100%);
-            }
-
-            .myHr {
-                height: 2px;
-                border-radius: 100px;
-            }
-
-            .myLinkBtn {
-                border-radius: 100px;
-                width: 50%;
-                border: 2px solid #fff;
-            }
-
-            @media (max-width: 720px) {
-                .wrapper {
-                    margin: 2px;
-                }
-            }
-        </style>
 </body>
 
 </html>

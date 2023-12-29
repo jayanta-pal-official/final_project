@@ -7,7 +7,6 @@ if (isset($_REQUEST['submit'])) {
     $password = $_REQUEST['password'];
     $query = "SELECT * FROM user WHERE email = '$email' AND password='$password' AND user_role = '0' ";
     $result = mysqli_query($conn, $query);
-
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
 
@@ -15,16 +14,12 @@ if (isset($_REQUEST['submit'])) {
             'user_name' => $row['name'],
             'user_email' => $row['email'],
             'user_id'=> $row['id'],
-            // 'user_role' => $row['user_role'],
         ];
-        // $user_role = $_SESSION['user_details']['user_role'];
-        // $_SESSION['u_loggedin'] = "$user_role";
         $_SESSION['u_loggedin'] = true;
         $_SESSION['user_status'] = "Login Successfully";
         header("location: index.php");
         exit;
     } else {
-        
         $_SESSION['massage'] = "Email and Password not matched ";
         header("location: ./user_login.php");
         exit;

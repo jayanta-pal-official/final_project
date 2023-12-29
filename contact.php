@@ -239,10 +239,10 @@
         @media screen and (max-width: 600px) {
             .screen-body {
                 padding: 40px;
-            }
 
-            .screen-body-item {
-                padding: 0;
+                .screen-body-item {
+                    padding: 0;
+                }
             }
         }
     </style>
@@ -285,7 +285,7 @@
                                     <input class="app-form-control" name="massage" placeholder="MESSAGE">
                                 </div>
                                 <div class="app-form-group buttons">
-                                    
+
                                     <button type="submit" class="app-form-button" name="submit">SEND NOW</button>
                                 </div>
                             </div>
@@ -309,7 +309,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

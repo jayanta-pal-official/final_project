@@ -7,7 +7,6 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
   <style>
     body {
   font-family: Arial, sans-serif;
@@ -19,7 +18,6 @@
   height: 100vh;
   background-color: #f4f4f4;
 }
-
 .confirmation-container {
   background-color: #fff;
   padding: 40px;
@@ -28,8 +26,6 @@
   text-align: center;
   animation: fadeInUp 0.5s ease forwards;
 }
-
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -40,10 +36,8 @@
     transform: translateY(0);
   }
 }
-
   </style>
-  <style>
-    
+  <style>  
 @supports (animation: grow .5s cubic-bezier(.25, .25, .25, 1) forwards) {
      .tick {
         stroke-opacity: 0;
@@ -52,7 +46,6 @@
         animation: draw .5s cubic-bezier(.25, .25, .25, 1) forwards;
         animation-delay: .6s
     }
-
     .circle {
         fill-opacity: 0;
         stroke: #219a00;
@@ -62,7 +55,6 @@
         animation: grow 1s cubic-bezier(.25, .25, .25, 1.25) forwards;   
     }   
 }
-
 @keyframes grow {
     60% {
         transform: scale(.8);
@@ -76,24 +68,13 @@
         fill: #219a00;
     }
 }
-
 @keyframes draw {
     0%, 100% { stroke-opacity: 1; }
     100% { stroke-dashoffset: 0; }
 }
-
-
-
-
-
-
-
-
-
 :root {
   --theme-color: var(--color-purple);
 }
-
 body {
     height: 100vh;
     display: flex;
@@ -103,7 +84,6 @@ body {
   </style>
 </head>
 <body>
-    
   <div class="confirmation-container">
     <div class="svg-container">    
         <svg class="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
@@ -122,7 +102,6 @@ body {
   <script>
     let path = document.querySelector(".tick");
 let length = path.getTotalLength();
-
 console.log(length); 
   </script>
 </body>
