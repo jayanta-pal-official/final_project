@@ -1,6 +1,13 @@
 <?php
 session_start();
 include("admin/config/dbcon.php");
+
+if (!isset($_SESSION['u_loggedin'])) {
+    $_SESSION['warning'] = "Login to Chackout Products";
+    header("location:user_login.php");
+    exit;
+}
+
 $q = 0;
 if (isset($_SESSION["cart"])) {
     foreach ($_SESSION["cart"] as $key => $value) {
@@ -32,8 +39,7 @@ if (isset($_SESSION["cart"])) {
         .error {
             color: red;
             font-weight: bold;
-        }
-       
+        }   
     </style>
 </head>
 
