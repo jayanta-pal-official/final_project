@@ -138,8 +138,8 @@ if (isset($_SESSION["cart"])) {
                             $i++;
                         }
                     } else { ?>
-                        <div class="alert alert-warning alert-dismissible fade show text-center " role="alert">
-                            <strong>Warning!</strong> No record found
+                        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                            <strong>Not found!</strong> Plese add product
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php  }
