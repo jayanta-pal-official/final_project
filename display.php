@@ -35,27 +35,27 @@ if (isset($_SESSION["cart"])) {
 </head>
 
 <body>
-  <?php include_once('./user_nav.php');
-  if (isset($_SESSION["cart"])) {
-  ?>
+  <?php include_once('./user_nav.php') ?>
 
-    <div class="container " style="margin-top: 90px;">
-      <div class="container-item">
-        <table class="table table-bordered text-center ">
-          <tr>
-            <th> Index no</th>
-            <th>Product Name</th>
-            <th>Product Image</th>
-            <th>Product Price</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
-            <th>Update</th>
-            <th>Remove</th>
-          </tr>
-          <?php
-          $sum = 0;
-          $q = 0;
-
+  <div class="container " style="margin-top: 90px;">
+    <div class="container-item">
+      <table class="table table-bordered text-center ">
+        <tr>
+          <th> Index no</th>
+          <th>Product Name</th>
+          <th>Product Image</th>
+          <th>Product Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Update</th>
+          <th>Remove</th>
+        </tr>
+        <?php
+        $sum = 0;
+        $q = 0;
+        
+        $values = $_SESSION['cart'];
+        if (isset($_SESSION["cart"])) {
           foreach ($values as $key => $value) {
             $sum = $sum + $value['total_price'];
             $q = $q + $value['quentity'];
@@ -90,29 +90,24 @@ if (isset($_SESSION["cart"])) {
                             </form>
                             </tr>";
           }
-
-          ?>
-        </table>
-        <div class="tota_price">
-          <b> <label>Total Price : </label><strong style="color:aqua"><?php echo " " . $sum . "/-" ?></strong> </b>
-          <a href="index.php" class="btn btn-info">Continue Shopping</a>
-          <a href="chackout.php" class="btn btn-dark">chackout</a>
-        </div>
-      </div>
-    </div>
-  <?php
-  } else {
-    echo '<script>
-          swal({
-            title: "Empty card!",
-            text: "Please add product in your cart!",
-            icon: "warning",
-          });
+        }
+        if (empty($_SESSION["cart"])) {
+          echo '<script>
+          swal("Your Cart is empty!");
           setTimeout(function() {
-            window.location.href = "index.php";
+            window.location.href = "index.php"; 
         }, 1000);
                     </script>';
-  } ?>
+        }
+        ?>
+      </table>
+      <div class="tota_price">
+        <b> <label>Total Price : </label><strong style="color:aqua"><?php echo " " . $sum . "/-" ?></strong> </b>
+        <a href="index.php" class="btn btn-info">Continue Shopping</a>
+        <a href="chackout.php" class="btn btn-dark">chackout</a>
+      </div>
+    </div>
+  </div>
   <script>
     $(".remove").click(function removeCart(e) {
       e.preventDefault();
