@@ -97,6 +97,7 @@ body {
       <p>Your order has been successfully placed!</p>
       <p>Thank you for shopping with us.</p>
       <!-- Add order details, shipping info, etc. -->
+      <a href="index.php" class="btn btn-success float-end text-white" >Continue shopping</a>
     </div>
   </div>
   <script>
