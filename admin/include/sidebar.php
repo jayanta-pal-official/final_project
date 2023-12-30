@@ -57,7 +57,7 @@
             <a href="registered.php" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>
-                Registered User
+                Registered Users
               </p>
             </a>
           </li>
@@ -65,14 +65,14 @@
             <a href="product.php" class="nav-link">
             <i class="fab fa-product-hunt"></i>
               <p>
-                  &nbsp&nbsp Product
+                  &nbsp&nbsp Products
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="all_order.php" class="nav-link">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i><p>
-                  &nbsp&nbsp Order
+                  &nbsp&nbsp Orders
               </p>
             </a>
           </li>
