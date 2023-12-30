@@ -94,11 +94,11 @@ include("include/common.php");
                 <thead>
                   <tr>
                     <th>Sl No</th>
-                    <th>Produts <br>Id</th>
+                    <th>Produt <br>Id</th>
                     <th>User Id</th>
-                    <th>Produts <br>Name</th>
-                    <th>Produts <br>Price</th>
-                    <th>Quentity</th>
+                    <th>Produt <br>Name</th>
+                    <th>Produt <br>Price</th>
+                    <th>Quantity</th>
                     <th>Total <br>Price</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -118,7 +118,7 @@ include("include/common.php");
                         <td><?= $row['user_id'] ?></td>
                         <td><?= $row['product_name'] ?></td>
                         <td><?= $row['product_price'] ?></td>
-                        <td><?="X". $row['quantity'] ?></td>
+                        <td><?= $row['quantity'] ?></td>
                         <td><?= $row['total_price'] ?></td>
                         <?php if($row['status'] == "active") { ?>
                            <td class="text-success" ><?= $row['status'] ?></td>

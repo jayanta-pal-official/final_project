@@ -129,7 +129,7 @@ include("include/common.php");
                       <input type="hidden" class="delete_id" value="<?php echo $row['id'] ?>"> 
                       <a href="javascript:void(0)"  class="confirm_delete  btn btn-danger btn-sm">DELETE</a>
                         <?php if($row['user_role'] == "0"){ ?>
-                        <a href="order.php?id=<?php echo $row['id'] ?>"  class="btn btn-success btn-sm">VIEW PRODUCT <i class="fa-regular fa-eye"></i></a>
+                        <a href="order.php?id=<?php echo $row['id'] ?>"  class="btn btn-success btn-sm">VIEW ORDER <i class="fa-regular fa-eye"></i></a>
                         <?php } ?>
                       </td>
                     </tr>

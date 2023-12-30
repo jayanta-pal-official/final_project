@@ -128,7 +128,7 @@ if (isset($_SESSION["cart"])) {
                                                         <input type="hidden" name="product_id" value="<?php echo $key  ?>">
                                                     </div>
                                                     <div class="col-md-3 text-center">
-                                                        <input class="form-control bg-transparent text-center border-0" type="text" name="product_quentity" value="<?php echo "X" . $value['quentity'] ?>">
+                                                        <input class="form-control bg-transparent text-center border-0" type="text" name="product_quentity" value="<?php echo $value['quentity'] ?>">
                                                         <input type="hidden" name="product_quentity" value="<?php echo $value['quentity'] ?>">
                                                     </div>
                                                     <div class="col-md-2 text-center">
