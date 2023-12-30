@@ -53,14 +53,12 @@ if (isset($_SESSION["cart"])) {
         <?php
         $sum = 0;
         $q = 0;
-        
-        $values = $_SESSION['cart'];
         if (isset($_SESSION["cart"])) {
+          $values = $_SESSION['cart'];
           foreach ($values as $key => $value) {
             $sum = $sum + $value['total_price'];
             $q = $q + $value['quentity'];
             $_SESSION['q'] = $q;
-            // echo '<pre>'; print_r($values);
             if (isset($value['total_price']) && $value['total_price'] > 0) {
               $totalPrice = $value['total_price'];
             } else {
