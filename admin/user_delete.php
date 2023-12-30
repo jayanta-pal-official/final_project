@@ -5,7 +5,7 @@ include("include/common.php");
 
 <div class="content-wrapper">
   <?php
-  $id = $_GET['id'];
+  $id = $_POST['delete_id'];
   $delete_query = "DELETE FROM `user` WHERE id=$id";
   $delete_result = mysqli_query($conn, $delete_query);
   if ($delete_result) {

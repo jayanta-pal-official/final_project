@@ -4,6 +4,8 @@ include("include/common.php");
 ?>
 <!-- jquery cdn -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- sweetalert cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="content-wrapper">
   <!-- Modal -->
   <div class="modal fade" id="Add_user_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,7 +126,8 @@ include("include/common.php");
                         ?>
                       </td>
                       <td><a href="register_edit.php?id=<?php echo $row['id'] ?>" class="btn btn-info btn-sm">EDIT</a>
-                        <a href="user_delete.php?id=<?php echo $row['id'] ?>" onclick="return my_function()" class="btn btn-danger btn-sm">DELETE</a>
+                      <input type="hidden" class="delete_id" value="<?php echo $row['id'] ?>"> 
+                      <a href="javascript:void(0)"  class="confirm_delete  btn btn-danger btn-sm">DELETE</a>
                         <?php if($row['user_role'] == "0"){ ?>
                         <a href="order.php?id=<?php echo $row['id'] ?>"  class="btn btn-success btn-sm">VIEW PRODUCT <i class="fa-regular fa-eye"></i></a>
                         <?php } ?>
@@ -143,9 +146,7 @@ include("include/common.php");
   </div>
 </div>
 <script>
-  function my_function() {
-    return confirm("are you sure ?");
-  }
+ 
   $(document).ready(function() {
     $('#name, #email,#phone_number,#password,#confirm_password').focus(function() {
       $(this).css('background-color', 'rgba(80, 199, 56)');
@@ -153,6 +154,39 @@ include("include/common.php");
     $('#name,#email,#phone_number,#password,#confirm_password').blur(function() {
       $(this).css('background-color', '');
     });
+  });
+</script>
+<script>
+  $('.confirm_delete').click(function(e) {
+    e.preventDefault();
+    var deleteid = $(this).closest('tr').find('.delete_id').val();
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this Data!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({
+            type: "POST",
+            url: "user_delete.php",
+            data: {
+              "delete_btn_set": 1,
+              "delete_id": deleteid,
+            },
+            success: function(response) {
+              swal("data deleted successfully.!", {
+                icon: "success",
+              }).then((result) => {
+                location.reload();
+              });
+            }
+
+          });
+        }
+      });
   });
 </script>
 
