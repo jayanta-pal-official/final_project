@@ -89,6 +89,21 @@
     .result {
         margin-top: 30px;
     }
+    .quantity{
+            position: absolute;
+    top: 7px;
+    text-align: center;
+    border-radius: 7px;
+    width: 22px;
+    height: 18px;
+    background-color: #ff6161;
+    border: 1px solid #fff;
+    font-weight: 700;
+    color: #f0f0f0;
+    line-height: 16px;
+    font-size: 12px;
+            
+        }
 </style>
 <!-- first child -->
 <nav class="navbar navbar-expand-lg navbar-light bg-info ">
@@ -107,7 +122,7 @@
                 </li>
             </ul>
             <form class="d-flex ">
-                <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup><?php echo " " . $q; ?></sup></a>
+                <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup class="quantity" ><?php echo $q; ?></sup></a>
             </form>
         </div>
     </div>
