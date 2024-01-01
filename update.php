@@ -9,6 +9,5 @@ if (isset($_REQUEST['update'])) {
     $_SESSION['cart'][$_REQUEST['key']] = ['ProductName' => $product_name, 'ProductImage' => $product_image, 'ProductPrice' => $product_price, 'total_price' => $total_item_price, 'quentity' => $product_quentity];
 }
 echo "<script>
-alert('Item Updated');
 window.location = 'display.php';
 </script>";
