@@ -81,9 +81,12 @@
     }
 
     .shoping {
-        font-size: 25px;
+        font-size: 19px;
         font-weight: bold;
-        color: black;
+        color: whitesmoke;
+    }
+    .shoping:hover{
+        color: white;
     }
 
     .result {
@@ -105,8 +108,17 @@
             
         }
 </style>
+<?php
+$q = 0;
+if (isset($_SESSION["cart"])) {
+  foreach ($_SESSION["cart"] as $key => $value) {
+    $q = $q + $value['quentity'];
+    $_SESSION['q'] = $q;
+  }
+}
+?>
 <!-- first child -->
-<nav class="navbar navbar-expand-lg navbar-light bg-info ">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #478dff;" >
     <div class="container-fluid ">
         <img src="./upload/logo_champu.png" class="logo" alt="logo">&nbsp;
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,20 +127,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php"><b>HOME</b></a>
+                    <a class="nav-link text-white" aria-current="page" href="index.php"><b>HOME</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="contact.php"><b>CONTACT</b></a>
+                    <a class="nav-link text-white" aria-current="page" href="contact.php"><b>CONTACT</b></a>
                 </li>
             </ul>
             <form class="d-flex ">
-                <a class="nav-link shoping" aria-current="page" href="display.php">cart <i class="fa-solid fa-cart-shopping"></i><sup class="quantity" ><?php echo $q; ?></sup></a>
+                <a class="nav-link shoping" aria-current="page" href="display.php">Cart <i class="fa-solid fa-cart-shopping"></i><sup class="quantity" ><?php echo $q; ?></sup></a>
             </form>
         </div>
     </div>
 </nav>
 <!-- second child -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary ">
+<nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #2a3a4de0; ">
     <ul class="navbar-nav  me-auto ">
         <li class="nav-item me-auto">
             <?php

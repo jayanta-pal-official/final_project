@@ -1,13 +1,6 @@
 <?php
 session_start();
 include("admin/config/dbcon.php");
-$q = 0;
-if (isset($_SESSION["cart"])) {
-    foreach ($_SESSION["cart"] as $key => $value) {
-        $q = $q + $value['quentity'];
-        $_SESSION['q'] = $q;
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,70 +21,6 @@ if (isset($_SESSION["cart"])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            /* overflow-x: hidden; */
-        }
-
-        .banner {
-            background-image: url(upload/banner.jpeg);
-            /* background-size: cover; */
-            background-repeat: no-repeat;
-            background-size: 100% 50%;
-        }
-
-        .card-img-top {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }
-
-        .images {
-            margin: 20px auto;
-        }
-
-        .logo {
-            width: 41px;
-            height: auto;
-            border-radius: 50%;
-        }
-
-        .card-img-top {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }
-
-        .banner {
-            width: 100%;
-            height: 100vh;
-
-        }
-
-        .product {
-            margin-top: 250px;
-        }
-
-        .shoping {
-            font-size: 25px;
-            font-weight: bold;
-            color: black;
-        }
-
-        .item {
-            background-color: whitesmoke;
-        }
-
-        .first_nav {
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-    </style>
 </head>
 
 <body>

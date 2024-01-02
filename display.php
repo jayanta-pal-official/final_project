@@ -1,13 +1,6 @@
 <?php
 session_start();
 include("admin/config/dbcon.php");
-$q = 0;
-if (isset($_SESSION["cart"])) {
-  foreach ($_SESSION["cart"] as $key => $value) {
-    $q = $q + $value['quentity'];
-    $_SESSION['q'] = $q;
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
