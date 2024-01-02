@@ -85,7 +85,7 @@ include("include/common.php");
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Order List</h3>
+              <h3 class="card-title">Orders List</h3>
               <a href="registered.php" class="btn btn-primary hBack float-end">< Back</a>
             </div>
             <!-- /.card-header -->

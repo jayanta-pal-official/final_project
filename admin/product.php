@@ -85,7 +85,7 @@ include("include/common.php");
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Product List</h3>
+              <h3 class="card-title">Products List</h3>
               <a href="#" class="btn btn-primary btn-sm  float-right" data-toggle="modal" data-target="#Add_user_model">Add Product</a>
             </div>
             <!-- /.card-header -->
