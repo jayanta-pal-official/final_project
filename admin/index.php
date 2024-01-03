@@ -1,6 +1,7 @@
 <?php
 include("./authentication.php");
 include("./include/common.php");
+include("config/dbcon.php");
 ?>
 
 <!DOCTYPE html>
@@ -50,11 +51,17 @@ include("./include/common.php");
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
+            <?php 
+              $sql_total_oders = "SELECT COUNT(id) as total_rows FROM order_details ";
+              $result=mysqli_query($conn,$sql_total_oders);
+              $row= mysqli_fetch_assoc($result);
+
+              ?>
               <div class="inner">
-                <h3>150</h3>
+                <h3><?php echo $row['total_rows'] ?></h3>
 
                 <p>New Orders</p>
               </div>
@@ -65,26 +72,19 @@ include("./include/common.php");
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+          
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
+              <?php 
+              $sql_total_users = "SELECT COUNT(id) as total_rows FROM user ";
+              $result=mysqli_query($conn,$sql_total_users);
+              $row= mysqli_fetch_assoc($result);
+
+              ?>
               <div class="inner">
-                <h3>44</h3>
+                <h3><?php echo $row['total_rows'] ; ?></h3>
 
                 <p>User Registrations</p>
               </div>
@@ -95,13 +95,19 @@ include("./include/common.php");
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
+            <?php 
+              $sql_total_products = "SELECT COUNT(id) as total_rows FROM product ";
+              $result=mysqli_query($conn,$sql_total_products);
+              $row= mysqli_fetch_assoc($result);
 
-                <p>Unique Visitors</p>
+              ?>
+              <div class="inner">
+                <h3><?php echo $row['total_rows'] ?></h3>
+
+                <p>Products</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
