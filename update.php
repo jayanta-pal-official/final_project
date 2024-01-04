@@ -1,13 +1,11 @@
 <?php
 session_start();
-if (isset($_REQUEST['update'])) {
-    $product_name = $_REQUEST['product_name'];
-    $product_image = $_REQUEST['product_image'];
-    $product_price = $_REQUEST['ProductPrice'];
-    $product_quentity = $_REQUEST['quentity'];
-    $total_item_price = $_REQUEST['ProductPrice'] * $_REQUEST['quentity'];
-    $_SESSION['cart'][$_REQUEST['key']] = ['ProductName' => $product_name, 'ProductImage' => $product_image, 'ProductPrice' => $product_price, 'total_price' => $total_item_price, 'quentity' => $product_quentity];
-}
-echo "<script>
-window.location = 'display.php';
-</script>";
+
+$product_name = $_POST['product_names'];
+ $product_image = $_POST['product_image'];
+ $product_price = $_POST['product_price'];
+ $product_quentity = $_POST['product_quentity'];
+ $total_item_price = $_POST['total_item_price'];
+ $_SESSION['cart'][$_POST['id']] = ['ProductName' => $product_name,'ProductPrice' => $product_price,'total_price' => $total_item_price,'ProductImage' => $product_image, 'quentity' => $product_quentity];
+
+?>

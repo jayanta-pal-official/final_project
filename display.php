@@ -32,7 +32,7 @@ include("admin/config/dbcon.php");
 
   <div class="container " style="margin-top: 90px;">
     <div class="container-item">
-      <table class="table table-bordered text-center ">
+    <table class="table table-bordered text-center ">
         <tr>
           <th> Index no</th>
           <th>Product Name</th>
@@ -44,12 +44,15 @@ include("admin/config/dbcon.php");
           <th>Remove</th>
         </tr>
         <?php
-        $sum = 0;
-        $q = 0;
+        $sum=0;
+        $q =0;
+        $i=1;
         if (isset($_SESSION["cart"])) {
           $values = $_SESSION['cart'];
           foreach ($values as $key => $value) {
-            $sum = $sum + $value['total_price'];
+            // echo "<pre>";
+            // print_r($value['total_price']+$sum);
+            $sum = $sum + intval($value['total_price']);
             $q = $q + $value['quentity'];
             $_SESSION['q'] = $q;
             if (isset($value['total_price']) && $value['total_price'] > 0) {
@@ -64,22 +67,25 @@ include("admin/config/dbcon.php");
                             <td><img src='" . $value['ProductImage'] . "' width='100' height='100'></td>
                             <td> " . $value['ProductPrice'] . "</td>
             
-                            <form action='update.php' method='POST' >
-                            <td> <input class='text-center border-0 ' name='quentity' type='number' min ='1' max='10'  value='$value[quentity]' ></td>
-                            <td>" . $totalPrice . "</td>
-                            <input type='hidden' name='key' class='id' value='$key'>
-                            <input type='hidden' name='product_name' value='$value[ProductName]'>
-                            <input type='hidden' name='product_image' value='$value[ProductImage]'>
-                            <input type='hidden' name='update_item' value='$value[ProductName]'>
-                            <input type='hidden' name='ProductPrice' value='$value[ProductPrice]'>
-                            <td><input type='submit' class ='btn-warning' name='update' value='Update'></input></td>
+                            <form  method='POST' >
+                            <td> <input class='text-center border-0' name='quentity' id='product_quentity$i' type='number' min ='1' max='10' value='$value[quentity]'> </td>
+                            <td>" . $totalPrice. "</td>
+                            <input type='hidden' name='key' id='update_id$i' class='id' value='$key'>
+                            <input type='hidden' name='product_name'  id='product_name$i' value='$value[ProductName]'>
+                            <input type='hidden' name='product_image' id='product_image$i' value='$value[ProductImage]'>
+                            <input type='hidden' name='update_item' id='update_item$i' value='$value[ProductName]'>
+                            <input type='hidden' name='ProductPrice'  id='price_first$i' class='price_first' value='$value[ProductPrice]'>
+                            <input type='hidden' name='total_price'  id='total_price$i' class='price_first' value='$totalPrice'>
+                            <td><input type='button' class ='update_product btn-warning' id='update_product' name='update' value='Update'></input></td>
                             </form>
+                            
                             <form action='' method='POST' >
                             <input type='hidden' class='delete_key' name='delete_key' value='$key'>
                             <input type='hidden' name='remove_item' value='$value[ProductName]'>
                             <td><input type='button' name='remove' class='remove btn-danger ' value='Remove' onclick='removeCart()' ></input></td>
                             </form>
                             </tr>";
+                            $i++;
           }
         }
         if (empty($_SESSION["cart"])) {
@@ -99,6 +105,49 @@ include("admin/config/dbcon.php");
       </div>
     </div>
   </div>
+  <script>
+        $(".update_product").on("click",function updateCart(e) {
+          e.preventDefault();
+          // var key = $(this).closest('tr').find('.id').val();
+          var index = $(".update_product").index($(this));
+            var numIndex = Number(index) + 1;
+            var id = $("#update_id"+numIndex).val();
+            var product_quentity = $('#product_quentity'+ numIndex).val();
+            var product_image = $("#product_image"+ numIndex).val();
+            var product_price = $("#price_first"+ numIndex).val();
+            var product_name = $("#product_name"+ numIndex).val();
+            var total_item_price = (product_quentity * product_price);
+          
+          
+            
+          $.ajax({
+                url: "update.php",
+                type: "POST",
+                data: {
+                    id: id,
+                    product_names: product_name,
+                    product_image: product_image,
+                    product_price: product_price,
+                    product_quentity: product_quentity,
+                    total_item_price: total_item_price,
+                },
+                
+                success: function(data) {
+                    swal("Update!", "", "success")
+                        .then((result) => {
+                            location.reload();
+                        })
+                        .then($("#submit").click(function myfunction() {}))
+                },
+                error: function(xhr, status, error) {
+                    swal("not added!", "Failed to add item to cart", "error")
+                        .then((result) => {
+                           location.reload();
+                        });
+                },
+            });
+        });
+  </script>
   <script>
     $(".remove").click(function removeCart(e) {
       e.preventDefault();
