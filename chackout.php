@@ -2,11 +2,12 @@
 session_start();
 include("admin/config/dbcon.php");
 
-if (!isset($_SESSION['u_loggedin'])) {
-    $_SESSION['warning'] = "Login to Chackout Products";
-    header("location:user_login.php");
-    exit;
-}
+// if (!isset($_SESSION['u_loggedin'])) {
+//     $_SESSION['warning'] = "Login to Chackout Products";
+//     header("location:user_login.php");
+//     exit;
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
