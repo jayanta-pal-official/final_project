@@ -45,11 +45,36 @@ if ($_SESSION['u_loggedin'] == true) {
     $city = $_REQUEST['city'];
     $state = $_REQUEST['state'];
     $zip = $_REQUEST['zip'];
-    $sql = "INSERT INTO user (name,email,address,city,State,pin) VALUES('$firstname', '$email','$address','$city','$state','$zip')";
+   // random password
+    function generateRandomPassword($length = 8) {
+      $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      $password = '';
+      $charactersLength = strlen($characters);
+      for ($i = 0; $i < $length; $i++) {
+          $password .= $characters[rand(0, $charactersLength - 1)];
+      }
+      return $password;
+  }
+  $randomPassword = generateRandomPassword(); // Generates a password of default length 8
+//  $rend_password=$randomPassword;
+
+    $sql = "INSERT INTO user (name,email,password,address,city,State,pin) VALUES('$firstname', '$email','$randomPassword','$address','$city','$state','$zip')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
-
       $last_id = mysqli_insert_id($conn);
+
+      // $to = '$email';
+      // $subject = "Test mail";
+      // $massage ="Your mail ".$to."Your password 123456";
+      // $from = 'paljayanta18@gmail.com';
+      // $headeres= "From". $from ;
+      // if(mail($to,$subject,$massage,$headeres)){
+      //   echo "mail send";
+      // }
+      // else{
+      //   echo "mail not send";
+      // }
+      
       if (isset($_SESSION['cart'])) {
         $total_price = $_REQUEST['total_price'];
       }

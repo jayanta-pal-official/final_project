@@ -100,10 +100,5 @@ body {
       <a href="index.php" class="btn btn-success float-end text-white" >Continue shopping</a>
     </div>
   </div>
-  <script>
-    let path = document.querySelector(".tick");
-let length = path.getTotalLength();
-console.log(length); 
-  </script>
 </body>
 </html>
