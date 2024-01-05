@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 
 include("admin/config/dbcon.php");
 
-if ($_SESSION['u_loggedin'] == true) {
+if ( isset($_SESSION['u_loggedin']) AND $_SESSION['u_loggedin'] == true) {
   if (isset($_REQUEST['placeorder'])) {
     $id = $_REQUEST['id'];
     $firstname = $_REQUEST['firstname'];
@@ -62,13 +62,13 @@ if ($_SESSION['u_loggedin'] == true) {
       return $password;
     }
     $randomPassword = generateRandomPassword(); // Generates a password of default length 8
-    $sql = "INSERT INTO user (name,email,phone_number,password,address,city,State,pin) VALUES('$firstname','$email','$phone_number','$randomPassword','$address','$city','$state','$zip')";
-    $result = mysqli_query($conn, $sql);
+      $sql = "INSERT INTO user (name,email,phone_number,password,address,city,State,pin) VALUES('$firstname','$email','$phone_number','$randomPassword','$address','$city','$state','$zip')";
+      $result = mysqli_query($conn, $sql);
     if ($result) {
       $last_id = mysqli_insert_id($conn);
       // send mail for guest user.
-      $subject = "test mail";
-      $massage = "Hey,".$_POST['firstname']."<br> your mail Id : " . $_POST['email'] . " <br> Password : " . $randomPassword;
+      $subject = "Personal details ";
+      $massage = "Hey, <b>".$_POST['firstname']."</b><br> Your account is successfully created. <br>  Email Id : " . $_POST['email'] . " <br> Password : " . $randomPassword;
       require 'phpmailer/src/Exception.php';
       require 'phpmailer/src/PHPMailer.php';
       require 'phpmailer/src/SMTP.php';

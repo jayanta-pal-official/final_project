@@ -11,6 +11,8 @@ $(document).ready(function(){
             email:{
                 required: true,
                 email:true,
+               
+
             },
             phone_number:{
                 required: true,
