@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 include("admin/config/dbcon.php");
 
 if ($_SESSION['u_loggedin'] == true) {
@@ -41,40 +45,48 @@ if ($_SESSION['u_loggedin'] == true) {
   if (isset($_REQUEST['placeorder'])) {
     $firstname = $_REQUEST['firstname'];
     $email = $_REQUEST['email'];
+    $phone_number = $_REQUEST['phone_number'];
     $address = $_REQUEST['address'];
     $city = $_REQUEST['city'];
     $state = $_REQUEST['state'];
     $zip = $_REQUEST['zip'];
-   // random password
-    function generateRandomPassword($length = 8) {
+    // random password generates
+    function generateRandomPassword($length = 8)
+    {
       $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
       $password = '';
       $charactersLength = strlen($characters);
       for ($i = 0; $i < $length; $i++) {
-          $password .= $characters[rand(0, $charactersLength - 1)];
+        $password .= $characters[rand(0, $charactersLength - 1)];
       }
       return $password;
-  }
-  $randomPassword = generateRandomPassword(); // Generates a password of default length 8
-//  $rend_password=$randomPassword;
-
-    $sql = "INSERT INTO user (name,email,password,address,city,State,pin) VALUES('$firstname', '$email','$randomPassword','$address','$city','$state','$zip')";
+    }
+    $randomPassword = generateRandomPassword(); // Generates a password of default length 8
+    $sql = "INSERT INTO user (name,email,phone_number,password,address,city,State,pin) VALUES('$firstname','$email','$phone_number','$randomPassword','$address','$city','$state','$zip')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
       $last_id = mysqli_insert_id($conn);
+      // send mail for guest user.
+      $subject = "test mail";
+      $massage = "Hey,".$_POST['firstname']."<br> your mail Id : " . $_POST['email'] . " <br> Password : " . $randomPassword;
+      require 'phpmailer/src/Exception.php';
+      require 'phpmailer/src/PHPMailer.php';
+      require 'phpmailer/src/SMTP.php';
+      $mail = new PHPMailer(true);
+      $mail->isSMTP();
+      $mail->Host = 'smtp.gmail.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'jayantapal9735@gmail.com'; // mail id
+      $mail->Password = ''; //gmail app password 
+      $mail->SMTPSecure = 'ssl';
+      $mail->Port = 465;
+      $mail->setFrom('jayantapal9735@gmail.com');
+      $mail->addAddress($_POST['email']);
+      $mail->isHTML(true);
+      $mail->Subject = $subject;
+      $mail->Body = $massage;
+      $mail->send();
 
-      // $to = '$email';
-      // $subject = "Test mail";
-      // $massage ="Your mail ".$to."Your password 123456";
-      // $from = 'paljayanta18@gmail.com';
-      // $headeres= "From". $from ;
-      // if(mail($to,$subject,$massage,$headeres)){
-      //   echo "mail send";
-      // }
-      // else{
-      //   echo "mail not send";
-      // }
-      
       if (isset($_SESSION['cart'])) {
         $total_price = $_REQUEST['total_price'];
       }
