@@ -12,6 +12,10 @@ $(document).ready(function(){
                 required: true,
                 email:true,
             },
+            phone_number:{
+                required: true,
+                minlength: 10,
+            },
             address:{
                 required: true,
                 minlength: 2,
@@ -38,6 +42,10 @@ $(document).ready(function(){
             email:  {
                 required : "plese enter email",
                 email: "invalid email Id",
+            },
+            phone_number:  {
+                required : "plese enter your phone number",
+                minlength: "phone number should be tens digit",
             },
             address:  {
                 required : "plese enter address",

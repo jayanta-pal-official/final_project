@@ -1,13 +1,11 @@
 <?php
 session_start();
 include("admin/config/dbcon.php");
-
 // if (!isset($_SESSION['u_loggedin'])) {
 //     $_SESSION['warning'] = "Login to Chackout Products";
 //     header("location:user_login.php");
 //     exit;
 // }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +47,6 @@ include("admin/config/dbcon.php");
                             <div class="col-md-7 ">
                                 <h5>Basic Details</h5>
                                 <hr>
-                                <!-- <form action="placeorder_process.php" method="POST" id="chackout_form"> -->
                                 <div class="row">
 
                                     <div class="col-md-12 mb-3">
@@ -67,6 +64,14 @@ include("admin/config/dbcon.php");
                                                                                                                                                         echo $_SESSION['user_details']['user_email'];
                                                                                                                                                     } ?>">
                                     </div>
+                                    <?php
+                                        if (!isset($_SESSION['u_loggedin'])) {?>
+                                        <div class="col-md-12 mb-3">
+                                        <label class="fw-bold" for="email"><i class="fa-solid fa-mobile-screen-button"></i></i> Phone Number <strong class="text-danger">*</strong></label>
+                                        <input class="form-control" type="number" id="phone_number" name="phone_number" placeholder="Enter your Phone Number" required >
+                                    </div>
+                                       <?php }
+                                    ?>
                                     <div class="col-md-12 mb-3">
                                         <label class="fw-bold" for="address"><i class="fa-solid fa-address-card"></i> Address <strong class="text-danger">*</strong></label>
                                         <input class="form-control" type="text" id="adr" name="address" placeholder="Enter your Address">
