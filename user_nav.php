@@ -107,6 +107,9 @@
     font-size: 12px;
             
         }
+        .new_user{
+            display: flex;
+        }
 </style>
 <?php
 $q = 0;
@@ -157,8 +160,11 @@ if (isset($_SESSION["cart"])) {
             if (isset($_SESSION['u_loggedin'])) {  ?>
                 <a href="user_logout.php" class="nav-link ">Logout <i class="fas fa-sign-out-alt"></i></a>
             <?php  } else { ?>
+                <div class="new_user">
+                <a href="user_registration.php" class="nav-link "><i class="fa-solid fa-user-plus"></i></i>&nbsp<b>Register </b> </a>
                 <a href="user_login.php" class="nav-link "><i class="fas fa-sign-in-alt"></i>&nbsp<b>Login </b> </a>
-            <?php } ?>
+                </div>
+                <?php } ?>
 
         </li>
     </ul>
